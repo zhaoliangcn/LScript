@@ -1,0 +1,767 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:微软雅黑;
+	panose-1:2 11 5 3 2 2 4 2 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"\@微软雅黑";
+	panose-1:2 11 5 3 2 2 4 2 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	layout-grid-mode:char;
+	font-size:11.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"页眉 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	text-align:center;
+	layout-grid-mode:char;
+	border:none;
+	padding:0cm;
+	font-size:9.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"页脚 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+	font-family:"Tahoma","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	text-indent:21.0pt;
+	layout-grid-mode:char;
+	font-size:11.0pt;
+	font-family:"Tahoma","sans-serif";}
+span.Char
+	{mso-style-name:"页眉 Char";
+	mso-style-link:页眉;
+	font-family:"Tahoma","sans-serif";}
+span.Char0
+	{mso-style-name:"页脚 Char";
+	mso-style-link:页脚;
+	font-family:"Tahoma","sans-serif";}
+.MsoChpDefault
+	{font-size:11.0pt;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:115%;}
+ /* Page Definitions */
+ @page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:18.0pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-CN>
+
+<div class=Section1 style='layout-grid:18.0pt'>
+
+<p class=MsoNormal align=center style='text-align:center'><b><span lang=EN-US
+style='font-size:20.0pt'>L</span></b><b><span style='font-size:20.0pt;
+font-family:"微软雅黑","sans-serif"'>脚本语言语法手册</span></b></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='font-size:16.0pt'>0.01</span><span style='font-size:16.0pt;font-family:
+"微软雅黑","sans-serif"'>版</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:16.0pt;font-family:"微软雅黑","sans-serif"'>赵亮</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>一、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>注释</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>L</span><span style='font-family:"微软雅黑","sans-serif"'>脚本语言的注释是以</span><span
+lang=EN-US>#</span><span style='font-family:"微软雅黑","sans-serif"'>打头的行，注释和空行会被解释引擎自动忽略</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>当解释引擎发现某行代码中包含错误时会尽可能地提供错误信息并简单地将这行代码忽略掉</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>二、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>对象定义和引用</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>任何对象必须先进行定义之后才能引用，对象定义的格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：对象类型，对象名称，初始值</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>例如</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>定义：整数，</span><span lang=EN-US>number1,0</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>定义：整数，</span><span lang=EN-US>number2,1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>定义：浮点数</span><span lang=EN-US>,double,1.0</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串</span><span lang=EN-US>,string1,”helloworld”</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>如果想要将对象的内容展示出来，可以这样</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>number1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>string1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>:</span><span style='font-family:"微软雅黑","sans-serif"'>是分隔符用来分隔动作和对象</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>,</span><span style='font-family:"微软雅黑","sans-serif"'>是分隔符用来分隔参数列表</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>在这里，对象的名称可以是除</span><span lang=EN-US>:,</span><span
+style='font-family:"微软雅黑","sans-serif"'>以外的任何字符串，中文、英文、韩文都是可以的</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>三、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>整数和浮点数</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>L</span><span style='font-family:"微软雅黑","sans-serif"'>脚本语言内置了对整数和浮点数的支持，允许进行四则运算、逻辑运算以及取余数等</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>整数定义的格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：整数，整数的名称，整数的初始值</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>浮点数定义的格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：浮点数，浮点数的名称，浮点数的初始值</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>整数和浮点数定义时必须进行初始化</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>四、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>数值计算、逻辑运算、位运算</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>数值计算和逻辑运算必须遵从固定的格式</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>计算：表达式的内容</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>如</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1+number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1*number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1&gt;number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>每一行代码的运行结果会保存到一个“结果”对象中，这个对象是全局的</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>所以如果我们想要把数值计算的结果显示出来，就可以这样写</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1+number2*100</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：结果</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>加减乘除四则运算</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>加法</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number+number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：结果</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>减法</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1-number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：结果</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>乘法</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1*number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：结果</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>除法</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1/number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：结果</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>取余数</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1%number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：结果</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>赋值</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1=number2+1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：结果</span><span lang=EN-US>&nbsp;&nbsp; </span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1+=number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1-=number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1*=number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1/=number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1%=number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>括号的使用</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>乘法</span> <span style='font-family:
+"微软雅黑","sans-serif"'>除法</span> <span style='font-family:"微软雅黑","sans-serif"'>取余数</span>
+<span style='font-family:"微软雅黑","sans-serif"'>操作的优先级高于</span> <span
+style='font-family:"微软雅黑","sans-serif"'>加法和减法</span> <span style='font-family:
+"微软雅黑","sans-serif"'>同级的运算保持左结合性，因此如果希望改变运算的顺序，需要通过使用括号，如</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>(number1+number2)*100</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>逻辑运算</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L</span><span
+style='font-family:"微软雅黑","sans-serif"'>脚本语言中逻辑值</span><span lang=EN-US>&quot;</span><span
+style='font-family:"微软雅黑","sans-serif"'>真</span><span lang=EN-US>&quot;</span><span
+style='font-family:"微软雅黑","sans-serif"'>等价于数值</span><span lang=EN-US>1, </span><span
+style='font-family:"微软雅黑","sans-serif"'>逻辑值</span><span lang=EN-US>&quot;</span><span
+style='font-family:"微软雅黑","sans-serif"'>假</span><span lang=EN-US>&quot;</span><span
+style='font-family:"微软雅黑","sans-serif"'>等价于数值</span><span lang=EN-US>0</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>因此逻辑运算的值仅有</span><span lang=EN-US>1</span><span
+style='font-family:"微软雅黑","sans-serif"'>和</span><span lang=EN-US>0</span><span
+style='font-family:"微软雅黑","sans-serif"'>两种状态</span><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>比较大小</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1&gt;number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：结果</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1&gt;=number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1&lt;number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1&lt;=number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>number1==number2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>逻辑与、逻辑或、逻辑异或、逻辑非</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>位运算</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>包括按位取反，按位左移，按位右移，按位与，按位或，按位异或</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>五、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>分支和循环</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>L</span><span style='font-family:"微软雅黑","sans-serif"'>脚本语言中支持条件分支，叫做“如果”语句，格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>如果：条件表达式或逻辑运算表达式</span> </u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>，条件为真时执行的语句</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>否则：条件为假时执行的语句</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>例如</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>如果：</span><span lang=EN-US>number1&gt;number2,</span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>&quot;</span><span
+style='font-family:"微软雅黑","sans-serif"'>大于</span><span lang=EN-US>&quot;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>否则：显示：“小于”</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>在</span><span lang=EN-US>L</span><span
+style='font-family:"微软雅黑","sans-serif"'>脚本语言中循环语句叫做“当”语句，格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>当：条件表达式或逻辑运算表达式，条件为真时重复执行的语句</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>例如</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>当：</span><span lang=EN-US>1</span><span
+style='font-family:"微软雅黑","sans-serif"'>，调用：函数，</span><span lang=EN-US>function1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>六、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>字符串和正则表达式</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>字符串定义时可以进行初始化，若没有初始化参数，则默认为空串</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>字符串定义的格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串，字符串的名称，字符串的初始值</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>例如</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串</span><span lang=EN-US>,string1,”hello”</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串，</span><span lang=EN-US>string2,&quot;
+world&quot;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>支持字符串的连接操作</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>连接：字符串，第一个字符串，第二个字符串</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>连接：字符串</span><span lang=EN-US>,string1,string2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>string1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>支持字符串取子串的操作</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>取子串：子串名称，原字符串名称，取子串时的其实位置，取子串的长度</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>如</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串</span><span lang=EN-US>,string3</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>取子串</span><span lang=EN-US>:string3,string1,1,3</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>允许将字符串的内容清空</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>清空：字符串，字符串的名称</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>支持字符串查找子串的操作</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>查找：字符串</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>原字符串</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>子串</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>如果找到子串，“结果”对象置为一个状态对象，其内容是“找到”否则其内容是“没找到”</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>如</span></p>
+
+<p class=MsoListParagraph style='margin-left:72.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>查找：字符串</span><span lang=EN-US>,string1,string2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>支持字符串替换子串的操作</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>替换</span><span lang=EN-US>:</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>字符串</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>原字符串</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>字符串中的子串</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>替换的子串</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>和查找一样，如果找到子串，“结果”对象置为一个状态对象，其内容是“找到”否则其内容是“没找到”</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>如</span></p>
+
+<p class=MsoListParagraph style='margin-left:72.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>替换</span><span lang=EN-US>:</span><span
+style='font-family:"微软雅黑","sans-serif"'>字符串</span><span lang=EN-US>,string1,string2,&quot;xyz&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>正则表达式本身是特殊格式的字符串，定义格式为</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义</span><span lang=EN-US>:</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>正则表达式</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>正则表达式的名称</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>正则表达式的内容</span></u></i></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>如</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>定义</span><span lang=EN-US>:</span><span
+style='font-family:"微软雅黑","sans-serif"'>正则表达式</span><span lang=EN-US>,regexp1,&quot;\d\d\d&quot;</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>如果要使用正则表达式匹配某个字符串，格式如下</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串</span><span lang=EN-US>,str2,&quot;abc&quot;</span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串</span><span lang=EN-US>,str1,123</span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>匹配：正则表达式</span><span lang=EN-US>,regexp1,str1</span></p>
+
+<p class=MsoNormal style='margin-left:72.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>匹配：正则表达式</span><span lang=EN-US>,regexp1,str2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>七、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>函数</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>和其它编程语言一样，函数必须先定义之后才能进行调用</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>函数定义的格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：函数，函数的名称，形式参数列表</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>开始：函数，函数的名称</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+lang=EN-US>#</span></u></i><i><u><span style='font-family:"微软雅黑","sans-serif"'>函数体</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>结束：函数，函数的名称</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>函数的参数可以是</span><span lang=EN-US>0</span><span
+style='font-family:"微软雅黑","sans-serif"'>个或任意多个，函数的参数必须是对象或静态数值</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>函数体可以是任意合法的代码行，但是不允许函数的嵌套定义</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>函数体必须是由对称的“开始“，“结束”包起来</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>函数体内部允许定义局部对象，其生存期随函数调用时产生，函数调用结束时销毁</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>函数调用的格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>调用：函数，函数的名称，实际参数列表</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>八、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>文件和目录</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>L</span><span style='font-family:"微软雅黑","sans-serif"'>脚本语言中，文件和目录都是内置对象</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>打开文件或目录的语句会返回一个文件对象，不需要定义</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>打开</span><span lang=EN-US>:</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>文件，文件对象名</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>文件的完整路径名</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>打开</span><span lang=EN-US>:</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>目录，目录对象名</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>目录的完整路径</span></u></i></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>如：</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>打开</span><span lang=EN-US>:</span><span
+style='font-family:"微软雅黑","sans-serif"'>文件</span><span lang=EN-US>,file1,c:\1.txt</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>打开</span><span lang=EN-US>:</span><span
+style='font-family:"微软雅黑","sans-serif"'>目录</span><span lang=EN-US>,dir1,c:\</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>对文件对象支持的操作有</span> <span
+style='font-family:"微软雅黑","sans-serif"'>复制、移动、删除、取大小、读取、写入</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>对目录对象支持的操作有</span> <span
+style='font-family:"微软雅黑","sans-serif"'>枚举目录中的文件</span> <span style='font-family:
+"微软雅黑","sans-serif"'>、枚举目录中的子目录</span> <span style='font-family:"微软雅黑","sans-serif"'>、复制、</span>
+<span style='font-family:"微软雅黑","sans-serif"'>移动、</span> <span
+style='font-family:"微软雅黑","sans-serif"'>删除</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>九、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>注册表</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>L</span><span style='font-family:"微软雅黑","sans-serif"'>脚本语言内置了对访问</span><span
+lang=EN-US>Windows</span><span style='font-family:"微软雅黑","sans-serif"'>注册表的支持</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>打开一个注册表项会返回一个注册表对象，在这个对象上支持读取、写入、删除操作</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>语法格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>打开：注册表</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>注册表对象名</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>注册表路径</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>值的名称</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>读取：注册表</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>注册表对象名</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>字符串对象名</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>写入：注册表，注册表对象名</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>字符串对象名</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>删除：注册表</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>注册表对象名</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><i><u><span
+lang=EN-US><span style='text-decoration:none'>&nbsp;</span></span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>如</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>打开：注册表</span><span lang=EN-US>,reg1,HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run,HttpServer</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>读取：注册表</span><span lang=EN-US>,reg1,string1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>写入：注册表，</span><span lang=EN-US>reg1,string1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>删除：注册表</span><span lang=EN-US>,reg1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span><span style='font-family:"微软雅黑","sans-serif"'>时间日期</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十一、<span style='font:7.0pt "Times New Roman"'> </span></span><span
+style='font-family:"微软雅黑","sans-serif"'>表</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十二、<span style='font:7.0pt "Times New Roman"'> </span></span><span
+style='font-family:"微软雅黑","sans-serif"'>网络</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十三、<span style='font:7.0pt "Times New Roman"'> </span></span><span
+style='font-family:"微软雅黑","sans-serif"'>随机数</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十四、<span style='font:7.0pt "Times New Roman"'> </span></span><span
+style='font-family:"微软雅黑","sans-serif"'>库</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十五、<span style='font:7.0pt "Times New Roman"'> </span></span><span
+style='font-family:"微软雅黑","sans-serif"'>与</span><span lang=EN-US>C/C++</span><span
+style='font-family:"微软雅黑","sans-serif"'>的交互</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十六、<span style='font:7.0pt "Times New Roman"'> </span></span><span
+style='font-family:"微软雅黑","sans-serif"'>用户交互接口</span></p>
+
+</div>
+
+</body>
+
+</html>
