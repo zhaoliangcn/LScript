@@ -58,7 +58,7 @@ Section "MainSection" SEC01
   File "manul.html"
   CreateDirectory "$SMPROGRAMS\SCRIPTENGINE"
   CreateShortCut "$SMPROGRAMS\SCRIPTENGINE\SCRIPTENGINE.lnk" "$INSTDIR\MiniScriptDebugger.exe"
-  CreateShortCut "$SMPROGRAMS\manul.lnk" "$INSTDIR\manul.html"
+  CreateShortCut "$SMPROGRAMS\SCRIPTENGINE\manul.lnk" "$INSTDIR\manul.html"
   CreateShortCut "$DESKTOP\SCRIPTENGINE.lnk" "$INSTDIR\MiniScriptDebugger.exe"  
   File "ScritpEngine.exe"
   SetOverwrite try
