@@ -735,30 +735,317 @@ style='font-family:"微软雅黑","sans-serif"'>删除：注册表</span><span lang=EN-US>
 lang=EN-US>十、<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </span></span><span style='font-family:"微软雅黑","sans-serif"'>时间日期</span></p>
 
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>L</span><span style='font-family:"微软雅黑","sans-serif"'>脚本语言中，时间对象的定义方式为</span>
+</p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：时间，时间对象的名称</span></u></i></p>
+
+<p class=MsoNormal style='text-indent:35.95pt'><span style='font-family:"微软雅黑","sans-serif"'>可以将当前时间读取到时间对象中</span></p>
+
+<p class=MsoNormal style='margin-left:22.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>读取：当前时间</span><span lang=EN-US>, </span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>时间对象的名称</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>时间对象可以通过比较运算符进行比较</span></p>
+
+<p class=MsoNormal style='text-indent:35.95pt'><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></p>
+
+<p class=MsoNormal style='text-indent:35.95pt'><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style='font-family:"微软雅黑","sans-serif"'>如果想要让脚本在运行过程中等待一段时间，可以调用睡眠语句</span></p>
+
+<p class=MsoNormal style='margin-left:22.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>睡眠：需要睡眠的毫秒数</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>例如：</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：时间</span><span lang=EN-US>,time1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>读取：当前时间</span><span lang=EN-US>,time1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>time1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>睡眠：</span><span lang=EN-US>1000</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：时间</span><span lang=EN-US>,time2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>读取：当前时间，</span><span lang=EN-US>time2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>time2</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>如果</span><span lang=EN-US>:((time1&lt;time2)||(time1==time2)),</span><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>&quot;time1</span><span
+style='font-family:"微软雅黑","sans-serif"'>早于或等于</span><span lang=EN-US>time2&quot;</span></p>
+
 <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
 lang=EN-US>十一、<span style='font:7.0pt "Times New Roman"'> </span></span><span
 style='font-family:"微软雅黑","sans-serif"'>表</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>L</span><span style='font-family:"微软雅黑","sans-serif"'>脚本语言中的表的概念与</span><span
+lang=EN-US>Lua</span><span style='font-family:"微软雅黑","sans-serif"'>语言中的表的概念类似，实际上就是名字与对象之间的映射关系</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>表中的元素可以是任意合法的</span><span lang=EN-US>L</span><span
+style='font-family:"微软雅黑","sans-serif"'>脚本对象，表的大小是动态的，允许动态添加删除元素</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>表定义的语法格式为</span></p>
+
+<p class=MsoNormal style='margin-left:22.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：表</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>表的名称</span></u></i></p>
+
+<p class=MsoNormal style='margin-left:22.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>插入：表</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>表的名称</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>对象名</span></u></i></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>例如</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串</span><span lang=EN-US>,str1,&quot;hello&quot;</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：字符串</span><span lang=EN-US>,str2,&quot;world&quot;</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：整数</span><span lang=EN-US>,number1,123456</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：浮点数</span><span lang=EN-US>,number2,1.75</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：表</span><span lang=EN-US>,table1</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>插入：表</span><span lang=EN-US>,table1,str1</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>插入：表</span><span lang=EN-US>,table1,str2</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>插入：表</span><span lang=EN-US>,table1,number1</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>插入：表</span><span lang=EN-US>,table1,number2</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：函数，</span><span lang=EN-US>function1,</span><span
+style='font-family:"微软雅黑","sans-serif"'>参数</span><span lang=EN-US>1</span><span
+style='font-family:"微软雅黑","sans-serif"'>，参数</span><span lang=EN-US>2</span></p>
+
+<p class=MsoNormal style='margin-left:72.05pt'><span style='font-family:"微软雅黑","sans-serif"'>开始</span><span
+lang=EN-US>:</span><span style='font-family:"微软雅黑","sans-serif"'>函数</span><span
+lang=EN-US>,function1</span></p>
+
+<p class=MsoNormal style='margin-left:72.05pt'><span style='font-family:"微软雅黑","sans-serif"'>显示：参数</span><span
+lang=EN-US>1</span></p>
+
+<p class=MsoNormal style='margin-left:72.05pt'><span style='font-family:"微软雅黑","sans-serif"'>显示：参数</span><span
+lang=EN-US>2</span></p>
+
+<p class=MsoNormal style='margin-left:72.05pt'><span style='font-family:"微软雅黑","sans-serif"'>结束</span><span
+lang=EN-US>:</span><span style='font-family:"微软雅黑","sans-serif"'>函数</span><span
+lang=EN-US>,function1</span></p>
+
+<p class=MsoNormal style='margin-left:72.05pt'><span style='font-family:"微软雅黑","sans-serif"'>插入：表</span><span
+lang=EN-US>,table1,function1</span></p>
+
+<p class=MsoNormal style='margin-left:72.05pt'><span style='font-family:"微软雅黑","sans-serif"'>显示</span><span
+lang=EN-US>:table1</span></p>
 
 <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
 lang=EN-US>十二、<span style='font:7.0pt "Times New Roman"'> </span></span><span
 style='font-family:"微软雅黑","sans-serif"'>网络</span></p>
 
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>目前</span><span lang=EN-US>L</span><span
+style='font-family:"微软雅黑","sans-serif"'>脚本支持</span><span lang=EN-US>TCP</span><span
+style='font-family:"微软雅黑","sans-serif"'>和</span><span lang=EN-US>UDP</span><span
+style='font-family:"微软雅黑","sans-serif"'>协议的网络访问，后台使用阻塞式</span><span lang=EN-US>socket</span><span
+style='font-family:"微软雅黑","sans-serif"'>实现</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>对网络的访问通过网络连接对象和地址对象完成</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span style='font-family:"微软雅黑","sans-serif"'>定义地址对象的格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：地址</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>地址对象的名称</span><span lang=EN-US>,IP(</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>如</span><span lang=EN-US>127.0.0.1),</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>端口号</span><span lang=EN-US>(</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>如</span><span lang=EN-US>27015)</span></u></i></p>
+
+<p class=MsoNormal style='text-indent:36.0pt'><span style='font-family:"微软雅黑","sans-serif"'>定义网络连接对象的格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:35.95pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>定义：网络连接</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>网络连接的名称</span><span lang=EN-US>,TCP</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>或</span><span lang=EN-US>UDP</span></u></i></p>
+
+<p class=MsoNormal style='text-indent:35.95pt'><span style='font-family:"微软雅黑","sans-serif"'>针对网络连接对象的动作有监听，连接，发送，接收</span><span
+lang=EN-US>&nbsp;&nbsp;&nbsp; </span><span style='font-family:"微软雅黑","sans-serif"'>格式为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>连接</span><span lang=EN-US>: </span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>网络连接的名称</span><span lang=EN-US>, </span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>地址对象的名称</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>发送</span><span lang=EN-US>: </span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>网络连接的名称</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>字符串对象名</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>接收</span><span lang=EN-US>: </span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>网络连接的名称</span><span lang=EN-US>, </span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>字符串对象名</span></u></i></p>
+
+<p class=MsoNormal style='text-indent:36.0pt'><span style='font-family:"微软雅黑","sans-serif"'>详细请参考例子代码</span></p>
+
 <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
 lang=EN-US>十三、<span style='font:7.0pt "Times New Roman"'> </span></span><span
 style='font-family:"微软雅黑","sans-serif"'>随机数</span></p>
 
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>在程序中我们经常会用到随机信息</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>在</span><span lang=EN-US>L</span><span
+style='font-family:"微软雅黑","sans-serif"'>脚本语言中，随机数是一类对象，实际上是特殊的整数类型</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>使用方法为</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>生成：随机数</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>随机数对象的名称</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:36.0pt'><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>刷新：随机数</span><span lang=EN-US>, </span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>随机数对象的名称</span></u></i></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>例如</span></p>
+
+<p class=MsoNormal><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>生成：随机数</span><span lang=EN-US>,random1</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>random1</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：整数</span><span lang=EN-US>,count,1000</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>定义：函数</span><span lang=EN-US>,genrandom</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>开始：函数</span><span lang=EN-US>,genrandom</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>刷新：随机数</span><span lang=EN-US>,random1</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>显示：</span><span lang=EN-US>random1</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>计算：</span><span lang=EN-US>count=count-1</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>结束：函数</span><span lang=EN-US>,genrandom</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:36.0pt'><span
+style='font-family:"微软雅黑","sans-serif"'>当：</span><span lang=EN-US>count&gt;0,</span><span
+style='font-family:"微软雅黑","sans-serif"'>调用：函数</span><span lang=EN-US>,genrandom</span></p>
+
 <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
 lang=EN-US>十四、<span style='font:7.0pt "Times New Roman"'> </span></span><span
 style='font-family:"微软雅黑","sans-serif"'>库</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>L</span><span style='font-family:"微软雅黑","sans-serif"'>脚本语言支持自定义库以及库的导入机制，以最大程度的提供灵活性，并允许将自定义的函数注册为全局动作</span></p>
 
 <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
 lang=EN-US>十五、<span style='font:7.0pt "Times New Roman"'> </span></span><span
 style='font-family:"微软雅黑","sans-serif"'>与</span><span lang=EN-US>C/C++</span><span
 style='font-family:"微软雅黑","sans-serif"'>的交互</span></p>
 
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>由于操作系统提供的</span><span lang=EN-US>API</span><span
+style='font-family:"微软雅黑","sans-serif"'>都是</span><span lang=EN-US>C</span><span
+style='font-family:"微软雅黑","sans-serif"'>语言的接口，为了实现功能扩展，</span><span lang=EN-US>L</span><span
+style='font-family:"微软雅黑","sans-serif"'>脚本语言也允许直接调用操作系统的</span><span
+lang=EN-US>C</span><span style='font-family:"微软雅黑","sans-serif"'>语言</span><span
+lang=EN-US>API</span><span style='font-family:"微软雅黑","sans-serif"'>函数</span></p>
+
 <p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
 lang=EN-US>十六、<span style='font:7.0pt "Times New Roman"'> </span></span><span
 style='font-family:"微软雅黑","sans-serif"'>用户交互接口</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十七、<span style='font:7.0pt "Times New Roman"'> </span></span><span
+style='font-family:"微软雅黑","sans-serif"'>进程</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>如果我们想要在程序中启动外部程序，可以</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>运行</span><span lang=EN-US>:</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>程序</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>进程的名称</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>进程可执行文件的路径名</span><span lang=EN-US>,</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>启动参数</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>如果想要关闭已启动的外部程序，可以</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>关闭</span><span lang=EN-US>:</span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>程序</span><span lang=EN-US>, </span></u></i><i><u><span
+style='font-family:"微软雅黑","sans-serif"'>进程的名称</span></u></i></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+style='font-family:"微软雅黑","sans-serif"'>例如</span><span lang=EN-US>:</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:22.0pt'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp; </span><span style='font-family:"微软雅黑","sans-serif"'>运行</span><span
+lang=EN-US>:</span><span style='font-family:"微软雅黑","sans-serif"'>程序</span><span
+lang=EN-US>,proc1,notepad.exe,c:\hello.txt</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:0cm'><span
+lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span
+style='font-family:"微软雅黑","sans-serif"'>关闭</span><span lang=EN-US>:</span><span
+style='font-family:"微软雅黑","sans-serif"'>程序</span><span lang=EN-US>,proc1</span></p>
+
+<p class=MsoListParagraph style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US>十八、<span style='font:7.0pt "Times New Roman"'> </span></span><span
+style='font-family:"微软雅黑","sans-serif"'>其它</span></p>
 
 </div>
 
