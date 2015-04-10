@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="800,600">
+    <Container width="800" height="600">
+        <VerticalLayout width="800" height="600" bkcolor="#00FFFCCC" bkcolor2="#00FFF000">
+            <RichEdit name="EditCode" vscrollbar="true" multiline="true" float="true" pos="7,40,0,0" width="780" height="210" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+            <Button name="ButtonUI1" text="Open" float="true" pos="10,6,0,0" width="60" height="30" textcolor="#FF00EE00" disabledtextcolor="#FFAEEEAA" align="center" />
+            <Button name="ButtonUI2" text="Quit" float="true" pos="90,5,0,0" width="60" height="30" textcolor="#FF00EE00" disabledtextcolor="#FFAEEEAA" align="center" />
+			<Button name="ButtonUI3" text="GO" float="true" pos="170,6,0,0" width="60" height="30" textcolor="#FF00EE00" disabledtextcolor="#FFAEEEAA" align="center" />
+			<RichEdit name="EditOutputMessage" vscrollbar="true"  multiline="true" float="true" pos="7,260,0,0" width="778" height="250" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+            <Edit name="EditCommand" float="true" pos="7,520,0,0" width="778" height="30" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+        </VerticalLayout>
+    </Container>
+</Window>

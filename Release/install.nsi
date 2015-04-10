@@ -81,7 +81,8 @@ Section "MainSection" SEC01
   File "Scripts\testscript_time.scp"
   File "Scripts\testscript_userinput.scp"
   File "Scripts\testscript_userinput2.scp"
-  File "Scripts\testscript_registry.scp"  
+  File "Scripts\testscript_registry.scp" 
+  File "Scripts\testscript_class_person.scp"    
 SectionEnd
 
 Section -AdditionalIcons
@@ -134,6 +135,7 @@ Section Uninstall
   Delete "$INSTDIR\SampleScript\conscript_rebootcomputer.scp"
   Delete "$INSTDIR\SampleScript\conscript_file.scp"
   Delete "$INSTDIR\SampleScript\conscript_directory.scp"
+  Delete "$INSTDIR\SampleScript\testscript_class_person.scp"  
   Delete "$INSTDIR\ScritpEngine.exe"
   Delete "$INSTDIR\MiniScriptDebugger.exe"
   Delete "$INSTDIR\scp.ico"  
