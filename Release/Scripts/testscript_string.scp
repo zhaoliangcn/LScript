@@ -1,4 +1,5 @@
 #scp
+
 定义:函数,function1,参数1,参数2
 开始:函数,function1
 弹出：消息框,参数1,参数2
@@ -42,6 +43,9 @@
 显示:filename
 清空：字符串,filename
 显示:filename
+
+#格式化：字符串,filename,"%s%s",文件名,1
+#显示:filename
 
 
 

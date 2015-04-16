@@ -56,11 +56,15 @@ Section "MainSection" SEC01
   SetOverwrite ifnewer
   File "MiniScriptDebugger.exe"
   File "manul.html"
+  File "ScriptDebugger.exe"
+  File "DuiLib_u.dll"
+  File "UISkin1.xml"
   CreateDirectory "$SMPROGRAMS\SCRIPTENGINE"
-  CreateShortCut "$SMPROGRAMS\SCRIPTENGINE\SCRIPTENGINE.lnk" "$INSTDIR\MiniScriptDebugger.exe"
-  CreateShortCut "$SMPROGRAMS\SCRIPTENGINE\manul.lnk" "$INSTDIR\manul.html"
-  CreateShortCut "$DESKTOP\SCRIPTENGINE.lnk" "$INSTDIR\MiniScriptDebugger.exe"  
-  File "ScritpEngine.exe"
+  CreateShortCut "$SMPROGRAMS\SCRIPTENGINE\MiniScriptDebugger.lnk" "$INSTDIR\MiniScriptDebugger.exe"
+  CreateShortCut "$DESKTOP\MiniScriptDebugger.lnk" "$INSTDIR\MiniScriptDebugger.exe"  
+  CreateShortCut "$SMPROGRAMS\SCRIPTENGINE\ScriptDebugger.lnk" "$INSTDIR\ScriptDebugger.exe"
+  CreateShortCut "$SMPROGRAMS\SCRIPTENGINE\manul.lnk" "$INSTDIR\manul.html"  
+  File "ScriptEngine.exe"
   SetOverwrite try
   File "scp.ico" 
   SetOutPath "$INSTDIR\SampleScript"  
@@ -81,7 +85,13 @@ Section "MainSection" SEC01
   File "Scripts\testscript_time.scp"
   File "Scripts\testscript_userinput.scp"
   File "Scripts\testscript_userinput2.scp"
-  File "Scripts\testscript_registry.scp"  
+  File "Scripts\testscript_registry.scp" 
+  File "Scripts\testscript_class_person.scp"   
+  File "Scripts\xmlclass.scp" 
+  File "Scripts\conscript_file_attribute.scp"
+  File "Scripts\conscript_environment.scp"
+  File "Scripts\testscript_network_client_udp.scp"
+  File "Scripts\testscript_network_server_udp.scp"  
 SectionEnd
 
 Section -AdditionalIcons
@@ -98,8 +108,8 @@ Section -Post
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "Publisher" "${PRODUCT_PUBLISHER}"
   WriteRegStr HKCR ".scp" "" "chsscript"
   WriteRegStr HKCR "chsscript\DefaultIcon" "" "$INSTDIR\SCP.ico,0"
-  WriteRegStr HKCR "chsscript\Shell\Open\Command" "" '$INSTDIR\ScritpEngine.exe "%1"'
-  WriteRegStr HKCR "Applications\ScriptEngine.exe\shell\open\command" "" '$INSTDIR\ScritpEngine.exe "%1"'
+  WriteRegStr HKCR "chsscript\Shell\Open\Command" "" '$INSTDIR\ScriptEngine.exe "%1" %*'
+  WriteRegStr HKCR "Applications\ScriptEngine.exe\shell\open\command" "" '$INSTDIR\ScriptEngine.exe "%1" %*'
 SectionEnd
 
 
@@ -134,14 +144,24 @@ Section Uninstall
   Delete "$INSTDIR\SampleScript\conscript_rebootcomputer.scp"
   Delete "$INSTDIR\SampleScript\conscript_file.scp"
   Delete "$INSTDIR\SampleScript\conscript_directory.scp"
-  Delete "$INSTDIR\ScritpEngine.exe"
+  Delete "$INSTDIR\SampleScript\testscript_class_person.scp" 
+  Delete "$INSTDIR\SampleScript\xmlclass.scp" 
+  Delete "$INSTDIR\SampleScript\conscript_file_attribute.scp"
+  Delete "$INSTDIR\SampleScript\conscript_environment.scp"
+  Delete "$INSTDIR\SampleScript\testscript_network_client_udp.scp"
+  Delete "$INSTDIR\SampleScript\testscript_network_server_udp.scp"  
+  Delete "$INSTDIR\ScriptEngine.exe"
   Delete "$INSTDIR\MiniScriptDebugger.exe"
+  Delete "$INSTDIR\ScriptDebugger.exe"
+  Delete "$INSTDIR\DuiLib_u.dll"
+  Delete "$INSTDIR\UISkin1.xml"
   Delete "$INSTDIR\scp.ico"  
   Delete "$INSTDIR\manul.html"
 
   Delete "$SMPROGRAMS\SCRIPTENGINE\Uninstall.lnk"
-  Delete "$DESKTOP\SCRIPTENGINE.lnk"
-  Delete "$SMPROGRAMS\SCRIPTENGINE\SCRIPTENGINE.lnk"
+  Delete "$DESKTOP\MiniScriptDebugger.lnk"
+  Delete "$SMPROGRAMS\SCRIPTENGINE\MiniScriptDebugger.lnk"
+  Delete "$SMPROGRAMS\SCRIPTENGINE\ScriptDebugger.lnk"  
   Delete "$SMPROGRAMS\SCRIPTENGINE\manul.lnk"
   
   RMDir "$SMPROGRAMS\SCRIPTENGINE"
