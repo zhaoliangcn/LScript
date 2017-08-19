@@ -1,0 +1,4 @@
+#scp
+#scpeng
+shutdown:computer
+computer.shutdown()

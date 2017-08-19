@@ -1,0 +1,4 @@
+#scp
+#scpeng
+#reboot:computer
+computer.reboot()
