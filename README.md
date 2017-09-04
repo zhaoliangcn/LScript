@@ -1,3 +1,3 @@
 # LScript
 LScriptLanguage
-L脚本语言解释引擎Window安装包
+L脚本语言解释引擎Window安装包和例子脚本文件
