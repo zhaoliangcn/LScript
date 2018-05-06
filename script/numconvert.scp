@@ -1,0 +1,64 @@
+#scp
+#scpeng
+define:string,str
+define:string,str2
+#ÒÚÍòÇª°ÛÊ°¾Á°ÆÆâÂ½ÎéËÁÈş·¡Ò¼ÁãÔªÕû
+define:function,numtochs,strnum
+	define:string,strret
+	test:strnum=="1"
+		strret="Ò¼"
+	end	
+	test:strnum=="2"
+		strret="·¡"
+	end
+	test:strnum=="3"
+		strret="Èş"
+	end
+	if:strnum=="4"
+		strret="ËÁ"
+	end
+	if:strnum=="5"
+		strret="Îé"
+	end
+	if:strnum=="6"
+		strret="Â½"
+	end
+	if:strnum=="7"
+		strret="Æâ"
+	end
+	if:strnum=="8"
+		strret="°Æ"
+	end
+	if:strnum=="9"
+		strret="¾Á"
+	end
+	if:strnum=="0"
+		strret="Áã"
+	end	
+	if:strnum=="."
+		strret="µã"
+	end
+	return(strret)
+end
+
+define:function,strnumtochs,strnum
+	define:int,pos,0
+	define:int,length,0
+	define:string,strret
+	length=strnum.getsize()
+	while:pos<length
+		strret+=numtochs(strnum.getsubstring(pos,1))	
+		pos+=1
+	end
+	return(strret)
+end
+
+
+
+str="3.14"
+str = strnumtochs(str)
+str.show()
+
+str2="65536"
+str2 = strnumtochs(str2)
+str2.show()
