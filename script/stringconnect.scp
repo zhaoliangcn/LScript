@@ -1,0 +1,11 @@
+#scp
+#scpeng
+//sample of string connection
+define:string,str1,"abc"
+define:string,str2,"hello"
+define:string,str3,"world"
+define:int,number1,1023
+define:string,str4
+str4=str1.connect(str2,str3,number1)
+str1.show()
+str4.show()
