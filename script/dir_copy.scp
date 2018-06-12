@@ -1,0 +1,10 @@
+#scp
+#scpeng
+//sample of directory copy
+define:string,userData
+define:string,f2name,"F:\\test1"
+define:directory,f1,"F:\\test"
+f1.copy(f2name)
+#copy:f1,f2name
+#wait:userinput,userData
+delete:f2name
