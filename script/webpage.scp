@@ -1,0 +1,53 @@
+#scp
+#scpeng
+define:class,Web
+	public:
+	define:string,index,"<html><body>hello</body></html>"
+	define:string,mainpage
+	define:string,content,"this is web from lscript"
+	define:table,pricetable
+
+	define:string,apple,"<html><body>$6.0</body></html>"
+	define:string,egg,"<html><body>$5.0</body></html>"
+		
+	define:function,getdefault
+		return(index)
+	end
+	define:function,getmain		
+		mainpage="<html><body>"
+		mainpage=mainpage+content
+		mainpage+="</body></html>"
+		return(mainpage)
+	end
+	define:function,login,user,password
+		define:string,result,"<html><body>login failure!</body></html>"
+		test:(user=="tom" && password =="boy")
+			result = "<html><body>success!</body></html>"
+		end
+		return(result)
+	end
+	define:function,init
+		pricetable.insert(apple)
+		pricetable.insert(egg)
+		#(pricetable[apple]).show()
+	end
+	define:function,getprice,foodname	
+		define:string,price
+		test:(foodname=="apple"),price = pricetable[apple]	
+		test:(foodname=="egg"),price = pricetable[egg]		
+		return(price)		
+	end
+end
+
+define:function,main
+	define:Web,web
+	define:string,result
+	(web.getdefault()).show()
+	(web.getmain()).show()
+	(web.login("ada","girl")).show()
+	(web.login("tom","boy")).show()
+	web.init()
+	result=web.getprice("apple")
+	result.show()
+	(web.getprice("egg")).show()
+end

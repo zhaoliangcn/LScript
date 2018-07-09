@@ -1,0 +1,87 @@
+#scp
+//L脚本语言实现 HTTP服务器 
+//创建"HTTP服务"对象-->绑定IP端口-->设置HTTP请求处理回调-->启动HTTP服务
+//我们在这里写一个处理GET请求和POST请求的简单HTTP服务器
+
+定义:地址,addr1,"192.168.1.56",8080
+定义:字符串,serverroot,"F:\\httproot\\"
+
+定义:函数,ProcessGet,Request,Response
+//"HTTP请求"对象 在每一次HTTP请求中，作为处理回调函数的第一个参数被创建，回调函数返回时自动销毁
+//"HTTP响应"对象 在每一次HTTP请求中，作为处理回调函数的第二个参数被创建，回调函数返回时自动销毁
+	定义:字符串,uristring
+	
+	定义:字符串,filenamestr
+	定义:字符串,html,"<html>helloworld</html>"
+	定义:文件,scriptfile
+	#显示完整的HTTP请求内容
+	#Request.显示()
+	uristring=Request.获取("URI")
+	uristring.显示()	
+	如果:uristring=="favicon.ico",返回
+	#可以根据URI的值决定返回的数据
+	如果:((uristring=="/") || (uristring=="/index.html"))
+		Response.设置("状态","200 OK")
+		Response.设置("头部","Content-Type","text/html;charset=GB2312")
+		Response.设置("数据",html)
+		#设置数据时会自动计算数据长度，并设置HTTP头"Content-Length"
+	否则
+		filenamestr=serverroot+uristring.取子串(1)
+		scriptfile.关闭()
+		scriptfile.打开(filenamestr) //"K:\\httproot\\testhttpsrv.scp"
+		Response.设置("状态","200 OK")
+		Response.设置("头部","Content-Type","text/html;charset=UTF8")		
+		Response.设置("数据",scriptfile)		
+	结束
+	
+	#Response.显示()
+	#如果设置了响应数据，则回调函数返回时会自动发送给客户端
+结束
+
+定义:函数,ProcessPost,Request,Response
+	定义:字符串,uristring
+	定义:字符串,ContentType
+	定义:字符串,filenamestr
+	定义:表,formdata
+	定义:文件,scriptfile
+	#Request.显示()
+	uristring=Request.获取("URI")
+	uristring.显示()
+	ContentType=Request.获取("头部","Content-Type")
+	ContentType.显示()
+	如果:ContentType=="application/x-www-form-urlencoded",formdata=Request.获取("FORM")
+	#formdata.显示()
+	formdata[user].显示()
+	formdata[password].显示()
+	
+	#可以根据URI的值决定返回的数据
+	如果:(uristring=="/login")	
+		如果:(formdata[user]=="test" && formdata[password]=="123456"),filenamestr=serverroot+"success.html"
+		否则:filenamestr=serverroot+"failure.html"
+		#filenamestr=serverroot+"success.html"
+		#否则
+		#	filenamestr=serverroot+"failure.html"
+		#结束
+		scriptfile.关闭()
+		scriptfile.打开(filenamestr) 
+		Response.设置("状态","200 OK")
+		Response.设置("头部","Content-Type","text/html;charset=UTF8")		
+		Response.设置("数据",scriptfile)		
+	结束
+		
+	#Request.显示()
+	#Response.显示()
+结束
+
+定义:函数,HTTPD
+	定义:HTTP服务,httpsrv
+	httpsrv.设置("地址",addr1)
+	httpsrv.设置("回调","GET",ProcessGet)
+	httpsrv.设置("回调","POST",ProcessPost)
+	httpsrv.显示()
+	httpsrv.开始()
+结束
+
+定义:函数,主函数
+	HTTPD()
+结束
