@@ -1,0 +1,8 @@
+#scp
+#scpeng
+define:stack,st1
+define:string,s1,”abc”
+define:string,s2
+st1.push(s1)
+s2=st1.pop()
+s2.show()
