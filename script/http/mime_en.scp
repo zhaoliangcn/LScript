@@ -1,0 +1,28 @@
+#scplib
+#scpeng
+define:function,GetFileMimeType,File_Object
+	define:string,tmpMimeType
+	define:string,Ext
+	tmpMimeType = "application/misc"
+	Ext=File_Object.get("extension")
+	Ext.show()
+	if:Ext == ".txt"
+		tmpMimeType="text/html"
+	end
+	if:Ext == ".html"
+		tmpMimeType="text/html"
+	end
+	if:Ext == ".css"
+		tmpMimeType="text/css"
+	end
+	if:Ext == ".js"
+		tmpMimeType="application/x-javascript"
+	end	
+	if:Ext == ".ico"
+		tmpMimeType="application/misc"
+	end
+	if:Ext == ".jpg"
+		tmpMimeType="image/jpeg"
+	end	
+	return(tmpMimeType)
+end

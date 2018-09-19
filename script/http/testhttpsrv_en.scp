@@ -1,0 +1,96 @@
+#scp
+#scpeng
+load:extobj,"HttpServer"
+load:extobj,"Socket"
+import:library,"mime_en.scp"
+define:address,addr1,"0.0.0.0",8080
+define:string,serverroot,"F:\\share\\WEB\\AdminLTE_CN-2.4.5\\AdminLTE-2.4\\"
+define:string,page404,"<html>the page not found </html>"
+define:function,ProcessGet,Request,Response
+	define:string,uristring
+	define:string,filenamestr
+	define:string,html,"<html>helloworld</html>"
+	define:file,requestfile
+	define:int,exist
+	define:string,MimeType
+	define:string,ContentTypeValue
+	show:currenttime
+	uristring=Request.get("URI")
+	uristring.show()	
+	if:((uristring=="/"))
+		uristring = "/index.html"
+	end
+	if:((uristring=="/hello"))
+		Response.set("status","200 OK")
+		Response.set("head","Content-Type","text/html;charset=GB2312")
+		Response.set("data",html)
+	else
+		filenamestr=serverroot+uristring.getsubstring(1)
+		requestfile.close()
+		requestfile.open(filenamestr) //"K:\\httproot\\testhttpsrv.scp"
+		exist=requestfile.exist()
+		if:exist			
+			MimeType = GetFileMimeType(requestfile)
+			if:MimeType=="text/css"
+				ContentTypeValue=MimeType
+			else
+				ContentTypeValue=MimeType+";charset=UTF8"
+			end
+			ContentTypeValue.show()
+			Response.set("status","200 OK")
+			Response.set("head","Server","LScriptSampleHTTPServer")
+			Response.set("head","Content-Type",ContentTypeValue)
+			Response.set("data",requestfile)
+		else
+			Response.set("status","404 ERROR")
+			Response.set("head","Content-Type","text/html;charset=UTF8")		
+			Response.set("data",page404)
+		end
+	end
+end
+
+define:function,ProcessPost,Request,Response
+	define:string,uristring
+	define:string,ContentType
+	define:string,filenamestr
+	define:table,formdata
+	define:file,scriptfile
+	define:string,responshtml,"<html>helloworld</html>"
+	("ProcessPost Request").show()
+	uristring=Request.get("URI")
+	uristring.show()
+	ContentType=Request.get("head","Content-Type")
+	ContentType.show()
+	if:ContentType=="application/x-www-form-urlencoded",formdata=Request.get("FORM")
+	formdata[user].show()
+	formdata[password].show()
+
+	
+	if:(uristring=="/login")	
+		if:(formdata[user]=="test" && formdata[password]=="123456"),filenamestr=serverroot+"success.html"
+		else:filenamestr=serverroot+"failure.html"
+		scriptfile.close()
+		scriptfile.open(filenamestr) 
+		Response.set("status","200 OK")
+		Response.set("head","Content-Type","text/html;charset=UTF8")		
+		Response.set("data",scriptfile)	
+    else
+		Response.set("status","200 OK")
+		Response.set("head","Content-Type","text/html;charset=UTF8")		
+		Response.set("data",responshtml)	
+	end
+		
+end
+
+define:function,HTTPD
+	define:httpserver,httpsrv
+	httpsrv.set("address",addr1)
+	httpsrv.set("callback","GET",ProcessGet)
+	httpsrv.set("callback","POST",ProcessPost)
+	httpsrv.show()
+	httpsrv.start()
+end
+
+define:function,main
+	HTTPD()
+end
