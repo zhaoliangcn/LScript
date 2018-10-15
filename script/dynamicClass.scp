@@ -1,0 +1,32 @@
+#scp
+#scpeng
+//定义了一个空类，这个类没有成员变量、也没有成员函数
+define:class,algorithm
+end
+//定义了algorithm类的一个实例calc
+define:algorithm,calc
+
+define:function,add,x,y
+	return(x+y)
+end
+define:function,sub,x,y
+	return (x-y)
+end
+define:function,mul,x,y
+	return (x*y)
+end
+define:function,div,x,y
+	return (x/y)
+end
+//通过+=运算将函数添加为calc的成员函数
+//在这里可以理解为将新的函数添加到类的名字空间
+//动态添加的成员函数为公开访问权限
+calc+=add
+calc+=sub
+calc+=mul
+calc+=div
+calc.show()
+calc.add(1,1)
+define:int,ret
+ret = calc.div(100,calc.add(2+3,1+4))
+ret.show()
