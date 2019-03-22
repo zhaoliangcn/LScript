@@ -1,0 +1,5 @@
+#scp
+#scpeng
+define:int,test1,1024
+define:double,test2,3.1415926
+define:int64,test3,21474836470
