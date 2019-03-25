@@ -1,0 +1,26 @@
+#scp
+#scpeng
+//L脚本语言的类没有复杂的特性，仅包含类成员变量和类成员函数
+//在这里类的使用可以实现名字空间的隔离，便于代码的组织
+//这里没有C++语言的多重继承、虚函数、重载等概念
+//L脚本语言中类的成员变量和成员函数默认为私有访问
+define:class,algorithm
+public:
+	define:string,name,"alg"
+	define:function,pub1,param1
+		pri1(param1)
+	end
+private:
+	define:string,age,"10"
+	define:function,pri1,param2
+		(param2+age).show()
+	end
+	
+end
+define:algorithm,calc
+#calc.name.show()
+#define:string,s1,"SOS"
+#(s1+=calc.name).show()
+#calc.name.show()
+#calc.age.show()
+calc.pub1("abc")
