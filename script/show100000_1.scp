@@ -1,0 +1,12 @@
+#scp
+#scpeng
+currenttime.show()
+define:int,num,99999
+define:function,sh
+	num.show()
+	num--
+end
+loop:100000,sh
+currenttime.show()
+define:string,s
+wait:userinput,s
