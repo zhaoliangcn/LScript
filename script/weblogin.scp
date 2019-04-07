@@ -1,0 +1,19 @@
+#scp
+#scpeng
+define:class,webserver
+	define:string,url,"/login"
+	define:string,datasuccess,"{\"status\":\"success\"}"
+	define:string,datafail,{\"status\":\"failure\"}
+public:
+	define:function,userlogin,address,user,password
+		if(address ==url && user=="test" && password == "123456")
+			return(datasuccess)
+		else
+			return(datafail)
+		end
+	end	
+end
+
+define:webserver,web
+web.userlogin("/login","test","123456").show()
+web.userlogin("/login","test1","123456").show()
