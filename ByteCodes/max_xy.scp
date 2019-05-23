@@ -1,0 +1,10 @@
+#scp
+#scpeng
+define:function,max,x,y
+	if(x>y)
+		return(x)
+	else
+		return(y)
+	end
+end
+max(100, 200).show()
