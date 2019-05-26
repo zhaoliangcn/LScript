@@ -1,0 +1,9 @@
+#scp
+#scpeng
+define:double,d,100.91
+define:double,x,2
+define:string,s
+d = d * x
+s+=d.transform("string")
+d.show()
+s.show()

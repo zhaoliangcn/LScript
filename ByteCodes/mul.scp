@@ -1,0 +1,6 @@
+#scp
+#scpeng
+define:int,a,100
+define:int,b,9
+b*=a
+b.show()

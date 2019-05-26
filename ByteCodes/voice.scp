@@ -1,0 +1,17 @@
+#scp
+#scpeng
+load:extobj,Voice
+define:voice,myvoice
+define:double,x,8
+define:double,pi,3.14
+define:double,ret
+define:int,vol
+ret=x*pi
+ret.show()
+define:string,s,"8≥À“‘3.14µ»”⁄"
+s+=ret.transform("string")
+//vol=myvoice.get("volumn")
+//vol.show()
+#myvoice.set("volumn",50)
+s.show()
+myvoice.speak(s)
