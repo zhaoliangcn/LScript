@@ -1,0 +1,30 @@
+#scp
+#scpeng
+define:class,calc
+	define:int,a,100
+	define:int,b,2
+public:
+	define:function,f1
+		(a+b).show()
+	end
+	define:function,f2,x,y
+		return ((x+y).show())
+	end
+end
+
+define:function,main
+	define:calc,c1
+	define:int,i,0
+	define:int,j,0
+	c1.f2(i,i)
+	c1.f1()
+	(c1.f2(i,i)+j).show()
+	while:i<100
+		c1.f1()
+		i+=1
+		j+=2		
+		(c1.f2(i,i)+j).show()
+	end
+	//define:string,s
+	//wait:userinput,s
+end
