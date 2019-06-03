@@ -1,0 +1,10 @@
+#scp
+#scpeng
+define:queue,q1
+define:int,i,99
+define:int,x,100
+q1.add(i)
+q1.add(x)
+q1.show()
+q1.pop()
+q1.show()

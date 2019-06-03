@@ -1,0 +1,7 @@
+#scp
+#scpeng
+define:string,str4,100
+define:double,dstr
+dstr=str4.transform(double)
+dstr.show()
+

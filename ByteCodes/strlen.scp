@@ -1,0 +1,5 @@
+#scp
+#scpeng
+define:string,str1,"C:\\windows\\"
+str1.show()
+str1.length().show()

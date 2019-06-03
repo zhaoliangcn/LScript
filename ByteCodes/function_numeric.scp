@@ -1,0 +1,21 @@
+#scp
+#scpeng
+define:int,x,100
+define:int,y
+
+define:function,pow,num
+	return (num*num)
+end
+
+define:function,calc,num1,num2
+	return (num1*num1+2*num2+3)
+end
+
+define:int,z,1000
+
+while(z>0)
+	y=pow(x)
+	z-=1
+	calc(x,y).show()
+	y.show()
+end

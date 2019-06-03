@@ -1,0 +1,11 @@
+#scp
+#scpeng
+load:extobj,Voice
+define:voice,myvoice
+define:int,vol,50
+define:string,s,"helloworld"
+vol=myvoice.get("volumn")
+vol.show()
+#myvoice.set("volumn",50)
+s.show()
+myvoice.speak(s)

@@ -1,0 +1,7 @@
+#scp
+#scpeng
+define:time,t1
+t1.show()
+//currenttime.show()
+t1=currenttime
+t1.show()

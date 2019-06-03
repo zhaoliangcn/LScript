@@ -1,0 +1,20 @@
+#scp
+#scpeng
+//定义一个表对象
+define:table,tbl1
+//定义两个整数对象
+define:int,num1,200
+define:int,num2,100
+//将这两个整数对象插入表对象
+tbl1.insert(num1)
+tbl1.insert(num2)
+
+//定义一个表遍历函数，参数为表元素的引用
+define:function,itemadd,item
+	item+=1
+end
+
+tbl1.show()
+//遍历表对象，并对每一个元素调用函数itemadd
+tbl1.traverse(itemadd)
+tbl1.show()

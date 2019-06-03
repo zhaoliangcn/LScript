@@ -1,0 +1,14 @@
+#scp
+#scpeng
+currenttime.show()
+define:int,a,10
+define:int,b,9
+define:int,i,0
+while:i<1000
+(a*b+2*3-1+5-2*6).show()
+i+=1
+end
+//define:string,s
+currenttime.show()
+//wait:userinput,s
+//s.show()

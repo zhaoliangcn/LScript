@@ -1,0 +1,13 @@
+#scp
+#scpeng
+define:directory,dir1,"F:\\opensource\\build\\TranslateProject\\published\\"
+define:table,tbl1
+dir1.enum(file,tbl1)
+tbl1.show()
+define:int,i,0
+define:int,count,0
+count=tbl1.getsize()
+count.show()
+define:string,filename
+filename=tbl1.getelement(i)
+filename.show()

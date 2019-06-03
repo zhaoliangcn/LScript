@@ -1,0 +1,10 @@
+#scp
+#scpeng
+define:int,a,100
+define:int,b,9
+define:int,i,100000
+while(i>0)
+	b*=a
+	b+=i
+	b.show()
+end

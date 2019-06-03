@@ -1,0 +1,10 @@
+#scp
+#scpeng
+define:stack,st1
+define:int,i,99
+define:int,x,100
+st1.push(i)
+st1.push(x)
+st1.show()
+st1.pop()
+st1.show()

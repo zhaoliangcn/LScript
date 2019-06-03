@@ -1,0 +1,36 @@
+#scp
+#scpeng
+define:string,str1,"tabletest"
+define:table,strings
+strings.insert(str1)
+define:string,str2,"abc"
+strings.insert(str2)
+strings.show()
+define:string,str3
+str3 = strings.getelement(str1)
+str3.show()
+str3+=str2
+str3.show()
+define:int,iexist
+iexist = str3.find(str2)
+iexist.show()
+define:string,str3
+str3=str1
+str3 = str2.getsubstring(0,1)
+str3.show()
+str3=str1+str2
+str3.replace(str2,"def")
+str3.show()
+str3.transform(upper)
+str3.show()
+str3.transform(lower)
+str3.show()
+str3.transform(reverse)
+str3.show()
+define:string,str4,100
+define:int,istr
+define:double,dstr
+istr = str4.transform(int)
+istr.show()
+dstr=str4.transform(double)
+dstr.show()

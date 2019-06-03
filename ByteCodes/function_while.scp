@@ -51,6 +51,7 @@ define:int,z,1000
 while(z>0)
 
 	y=pow(x)
+	y=pow(y)
 	z-=1
 	y.show()
 

@@ -1,0 +1,4 @@
+#scp
+#scpeng
+define:double,d,100.91
+d.show()
