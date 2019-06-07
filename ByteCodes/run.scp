@@ -1,0 +1,5 @@
+#scp
+#scpeng
+load:extobj,OS
+define:process,proc1,"C:\\windows\\notepad.exe"
+proc1.run()
