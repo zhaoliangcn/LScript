@@ -1,0 +1,26 @@
+#scp
+#scpeng
+//简单的异或方式实现加解密
+define:int,number,100
+define:memory,memobj,8
+memobj.write(0,number)
+memobj.write(4,number)
+memobj.show()
+
+define:function,enc,mem
+	define:int,abc,0
+	define:int,def,0
+	define:int,magic,98
+	mem.read(0,abc)
+	abc=abc^magic
+	mem.write(o,abc)
+	
+	mem.read(4,def)
+	def=def^magic
+	mem.write(4,def)
+end
+enc(memobj)
+memobj.show()
+enc(memobj)
+memobj.show()
+
