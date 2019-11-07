@@ -1,0 +1,9 @@
+#scp
+#scpeng
+define:regexp,re,"\\.exe"
+define:string,s,"c:\\windows\\notepad.exe"
+//define:int,c
+//c=re.match(s)
+if(re.match(s))
+	("matched").show()
+end
