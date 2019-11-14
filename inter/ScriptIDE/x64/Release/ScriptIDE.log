@@ -1,0 +1,27 @@
+﻿  ChildFrm.cpp
+c:\release\lscript\scriptide\stdstringext.hpp(641): warning C4018: “<”: 有符号/无符号不匹配
+c:\release\lscript\scriptide\stdstringext.hpp(652): warning C4018: “<”: 有符号/无符号不匹配
+ChildFrm.cpp(59): warning C4244: “初始化”: 从“sptr_t”转换到“long”，可能丢失数据
+ChildFrm.cpp(66): warning C4244: “=”: 从“sptr_t”转换到“long”，可能丢失数据
+ChildFrm.cpp(67): warning C4244: “初始化”: 从“sptr_t”转换到“long”，可能丢失数据
+ChildFrm.cpp(350): warning C4244: “初始化”: 从“sptr_t”转换到“const int”，可能丢失数据
+ChildFrm.cpp(351): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(376): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(377): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(378): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(426): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(427): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(430): warning C4244: “参数”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(434): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(435): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(438): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(439): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(440): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(456): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(458): warning C4244: “初始化”: 从“sptr_t”转换到“int”，可能丢失数据
+ChildFrm.cpp(462): warning C4244: “=”: 从“sptr_t”转换到“int”，可能丢失数据
+  正在生成代码
+c:\release\lscript\scriptide\childfrm.cpp(53): warning C4715: “CChildFrame::SendEditor”: 不是所有的控件路径都返回值
+c:\release\lscript\scriptide\childfrm.cpp(283): warning C4715: “CChildFrame::DebugThread”: 不是所有的控件路径都返回值
+  已完成代码的生成
+  ScriptIDE.vcxproj -> C:\release\LScript\ScriptIDE\\x64\Release\ScriptIDE.exe
