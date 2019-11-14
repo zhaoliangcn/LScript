@@ -42,4 +42,14 @@ Network Trash Folder
 Temporary Items
 .apdisk
 Release/ScritpEngine.exe
-Release/ScritpEngine.exe
+*.ipch
+*.obj
+*.suo
+*.VC.db
+*.tlog
+*.pch
+*.pdb
+*.v12.suo
+
+
+

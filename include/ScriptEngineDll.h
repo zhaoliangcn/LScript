@@ -38,15 +38,21 @@ extern "C" void __stdcall	ScriptEnumObjects(HANDLE hScript,VTSTRINGS **objects);
 extern "C" void __stdcall	ScriptReleaseObjects(VTSTRINGS**objects);
 extern "C" int __stdcall	ScriptDoScript(HANDLE hScript,const wchar_t * scriptfilename,SCRIPTRUNTYPE mode=RUN_NORMAL);
 extern "C" int __stdcall	ScriptDebugMemoryScript(HANDLE hScript,wchar_t * MemoryScript);
-extern "C" int __stdcall	ScriptAddBreakPoints(HANDLE hScript,int line);
-extern "C" int __stdcall	ScriptEraseBreakPoint(HANDLE hScript,int line);
+extern "C" int __stdcall	ScriptAddBreakPoints(HANDLE hScript,int line); //ÒÑ·ÏÆú
+extern "C" int __stdcall	ScriptEraseBreakPoint(HANDLE hScript,int line);//ÒÑ·ÏÆú
 extern "C" void __stdcall	ScriptDumpObject(HANDLE hScript,const wchar_t *  objectname);
 extern "C" int __stdcall	ScriptDumpScript(HANDLE hScript,const wchar_t *  newscriptfilename);
-extern "C" void __stdcall	ScriptSetDebugEvent(HANDLE hScript);
+extern "C" void __stdcall	ScriptSetDebugEvent(HANDLE hScript);//ÒÑ·ÏÆú
 extern "C" bool __stdcall	ScriptReadScript(const wchar_t *  scriptfilename,VTSTRINGS** body);
 extern "C" void __stdcall	ScriptReleaseScript(VTSTRINGS** body);
 extern "C" BOOL __stdcall	ScriptRegisterGlobalCommand(HANDLE hScript,const wchar_t * chscommandstring, const wchar_t * engcommandstring, DWORD commandid, GlobalCommandFunctionPtr);
-
+extern "C" int __stdcall	ScriptDoByteCode(HANDLE hScript, const wchar_t * bytecodefilename, SCRIPTRUNTYPE mode = RUN_NORMAL);
+extern "C" int __stdcall	ScriptDoMemByteCode(HANDLE hScript, const unsigned char  * membytecode, int length,SCRIPTRUNTYPE mode = RUN_NORMAL);
+extern "C" int __stdcall	ScriptSetJit(HANDLE hScript, int Jit);
+extern "C" int __stdcall	ScriptDumpByteCode(HANDLE hScript, const wchar_t * ByteCodeFile);
+extern "C" int __stdcall	ScriptDoString(HANDLE hScript, const wchar_t * ScriptString);
+extern "C" int __stdcall	ScriptSetDebugger(HANDLE hScript, void * debugger);
+extern "C" int __stdcall	ScriptSetScriptFileName(HANDLE hScript, const wchar_t * ScriptFileName);
 
 typedef int (__stdcall		*FUNC_ScriptEngineDoString)(wchar_t * ScriptString);
 typedef int (__stdcall		*FUNC_ScriptEngineDoScriptFile)(wchar_t * ScriptFileName);
@@ -77,3 +83,10 @@ typedef void (__stdcall		*FUNC_ScriptSetDebugEvent)(HANDLE hScript);
 typedef bool (__stdcall		*FUNC_ScriptReadScript)(const wchar_t *  scriptfilename,VTSTRINGS** body);
 typedef void (__stdcall		*FUNC_ScriptReleaseScript)(VTSTRINGS** body);
 typedef BOOL (__stdcall		*FUNC_ScriptRegisterGlobalCommand)(HANDLE hScript, const wchar_t * chscommandstring, const wchar_t * engcommandstring, DWORD commandid, GlobalCommandFunctionPtr);
+typedef int (__stdcall		*FUNC_ScriptDoByteCode)(HANDLE hScript, const wchar_t * bytecodefilename, SCRIPTRUNTYPE mode );
+typedef int (__stdcall		*FUNC_ScriptDoMemByteCode)(HANDLE hScript, const unsigned char  * membytecode, int length, SCRIPTRUNTYPE mode );
+typedef int	(__stdcall		*FUNC_ScriptSetJit)(HANDLE hScript, int Jit);
+typedef int (__stdcall		*FUNC_ScriptDumpByteCode)(HANDLE hScript, wchar_t * ByteCodeFile);
+typedef int (__stdcall		*FUNC_ScriptDoString)(HANDLE hScript, const wchar_t * ScriptString);
+typedef int	(__stdcall		*FUNC_ScriptSetDebugger)(HANDLE hScript, void * debugger);
+typedef int (__stdcall		*FUNC_ScriptSetScriptFileName)(HANDLE hScript, const wchar_t * ScriptFileName);
