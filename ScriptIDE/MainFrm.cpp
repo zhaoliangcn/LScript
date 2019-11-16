@@ -17,7 +17,9 @@
 
 #include "MainFrm.h"
 #include "ChildFrm.h"
-
+#include "CDialogFind.h"
+#include "CDialogReplace.h"
+#include "stdstringext.hpp"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -35,6 +37,13 @@ BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWndEx)
 	ON_COMMAND(ID_BUTTON_RUN, &CMainFrame::OnButtonRun)
 	ON_COMMAND(ID_BUTTON_CONTINUE, &CMainFrame::OnButtonContinue)
 	ON_COMMAND(ID_BUTTON_DEBUG, &CMainFrame::OnButtonDebug)
+	ON_COMMAND(ID_EDIT_COPY, &CMainFrame::OnEditCopy)
+	ON_COMMAND(ID_EDIT_CUT, &CMainFrame::OnEditCut)
+	ON_COMMAND(ID_EDIT_PASTE, &CMainFrame::OnEditPaste)
+	ON_COMMAND(ID_EDIT_SELECT_ALL, &CMainFrame::OnEditSelectAll)
+	ON_COMMAND(ID_EDIT_FIND, &CMainFrame::OnEditFind)
+	ON_COMMAND(ID_EDIT_REPEAT, &CMainFrame::OnEditRepeat)
+	ON_COMMAND(ID_EDIT_REPLACE, &CMainFrame::OnEditReplace)
 END_MESSAGE_MAP()
 
 // CMainFrame 构造/析构
@@ -336,5 +345,79 @@ void CMainFrame::OnButtonDebug()
 		m_wndOutput.ClearDebugOutput();
 		_scriptDbg.mainframe = this;
 		child->DebugScript();		
+	}
+}
+
+
+void CMainFrame::OnEditCopy()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->CopySelection();
+	}
+}
+
+
+void CMainFrame::OnEditCut()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->CutSelection();
+	}
+}
+
+
+void CMainFrame::OnEditPaste()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->Paste();
+	}
+}
+
+
+void CMainFrame::OnEditSelectAll()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->SelectAll();
+	}
+}
+
+
+void CMainFrame::OnEditFind()
+{
+	CDialogFind finddlg;
+	finddlg.DoModal();
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->Find(STDSTRINGEXT::W2UTF(finddlg.text.AllocSysString()).c_str());
+	}
+}
+
+
+void CMainFrame::OnEditRepeat()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->FindNext();
+	}
+}
+
+
+void CMainFrame::OnEditReplace()
+{
+	CDialogReplace dlgReplace;
+	dlgReplace.DoModal();
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->Replace(STDSTRINGEXT::W2UTF(dlgReplace.text.AllocSysString()).c_str(), STDSTRINGEXT::W2UTF(dlgReplace.repText.AllocSysString()).c_str());
 	}
 }

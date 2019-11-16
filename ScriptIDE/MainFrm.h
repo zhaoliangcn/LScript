@@ -74,6 +74,13 @@ public:
 	afx_msg void OnButtonRun();
 	afx_msg void OnButtonContinue();
 	afx_msg void OnButtonDebug();
+	afx_msg void OnEditCopy();
+	afx_msg void OnEditCut();
+	afx_msg void OnEditPaste();
+	afx_msg void OnEditSelectAll();
+	afx_msg void OnEditFind();
+	afx_msg void OnEditRepeat();
+	afx_msg void OnEditReplace();
 };
 
 

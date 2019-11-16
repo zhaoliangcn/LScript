@@ -57,6 +57,12 @@
     <ClInclude Include="LScriptDebugger.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CDialogFind.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CDialogReplace.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ScriptIDE.cpp">
@@ -93,6 +99,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="LScriptDebugger.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CDialogFind.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CDialogReplace.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

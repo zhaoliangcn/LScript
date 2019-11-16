@@ -65,6 +65,13 @@ public:
 	virtual CString GetFrameText() const;
 	void SetContent(void * Content, size_t ContentLength);
 	bool GetContent(void ** Content, size_t &ContentLength);
+	bool CopySelection();
+	bool CutSelection();
+	bool Paste();
+	bool SelectAll();
+	bool Find(const char * text);
+	bool FindNext();
+	bool Replace(const char * text, const char* repText);
 	bool RunScript();
 	bool DebugScript();
 	SciFnDirect m_fnDirect;
@@ -75,4 +82,5 @@ public:
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	static DWORD WINAPI DebugThread(void*param);
 	HANDLE hthreadDebug;
+	std::string lastFindText;
 };

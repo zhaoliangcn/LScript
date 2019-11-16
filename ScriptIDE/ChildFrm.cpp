@@ -50,6 +50,7 @@ sptr_t CChildFrame::SendEditor(unsigned int iMessage, uptr_t wParam , sptr_t lPa
 {
 	if (m_fnDirect &&m_ptrDirect)
 		return m_fnDirect(m_ptrDirect, iMessage, wParam, lParam);
+	return 0;
 }
 void CChildFrame::UpdateLineNumberWidth(void)
 {
@@ -254,6 +255,83 @@ bool CChildFrame::GetContent(void ** Content, size_t & ContentLength)
 	}
 	return false;
 }
+bool CChildFrame::CopySelection()
+{
+//	int pos = SendEditor(SCI_SETSELECTIONSTART);
+//	int posend= SendEditor(SCI_SETSELECTIONEND);
+	
+	SendEditor(SCI_COPY);
+	return true;
+}
+bool CChildFrame::CutSelection()
+{
+	SendEditor(SCI_CUT);
+	return true;
+
+}
+bool CChildFrame::Paste()
+{
+	SendEditor(SCI_PASTE);
+	return true;
+}
+bool CChildFrame::SelectAll()
+{
+	SendEditor(SCI_SELECTALL);
+	
+	return true;
+}
+bool CChildFrame::Find(const char * text)
+{
+	if (text)
+	{
+		lastFindText = text;
+		Sci_TextToFind  ttf;
+		ttf.chrg.cpMin = 0;
+		ttf.chrg.cpMax = SendEditor(SCI_GETLENGTH, 0, 0);
+		ttf.lpstrText = text;
+		SendEditor(SCI_FINDTEXT, SCFIND_REGEXP, (sptr_t)&ttf);
+		SendEditor(SCI_GOTOPOS, ttf.chrgText.cpMin);
+		SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
+		SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
+		return true;
+	}	
+	return false;
+}
+bool CChildFrame::FindNext()
+{
+	Sci_TextToFind  ttf;
+	ttf.chrg.cpMin = SendEditor(SCI_GETCURRENTPOS, 0, 0);
+	ttf.chrg.cpMax = SendEditor(SCI_GETLENGTH, 0, 0);
+	ttf.lpstrText = lastFindText.c_str();
+	SendEditor(SCI_FINDTEXT, SCFIND_REGEXP, (sptr_t)&ttf);
+	SendEditor(SCI_GOTOPOS, ttf.chrgText.cpMin);
+	SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
+	SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
+	return false;
+}
+bool CChildFrame::Replace(const char * text, const char * repText)
+{
+	if (text &&repText)
+	{
+		Sci_TextToFind  ttf;
+		ttf.chrg.cpMin = 0;
+		ttf.chrg.cpMax = SendEditor(SCI_GETLENGTH, 0, 0);
+		ttf.lpstrText = text;
+		int find=SendEditor(SCI_FINDTEXT, SCFIND_REGEXP, (sptr_t)&ttf);
+		if (find >= 0)
+		{
+			SendEditor(SCI_GOTOPOS, ttf.chrgText.cpMin);
+			SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
+			SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
+			SendEditor(SCI_REPLACESEL, 0, (sptr_t)repText);
+			SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
+			SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
+			return true;
+		}
+	}
+
+	return false;
+}
 typedef struct _tag_THREAD_PARAM
 {
 	CMainFrame*mainframe;
@@ -277,9 +355,9 @@ DWORD WINAPI CChildFrame::DebugThread(void*param)
 			ScriptRegisterUICallBack(hEngine, (void *)threadparam->mainframe, (UICallBack)EditorUIMessage);
 			ScriptDebugMemoryScript(hEngine, (wchar_t *)STDSTRINGEXT::UTF2W((const char *)threadparam->content).c_str());
 		}
-		CloseScriptEngine(hEngine);
-		return 0;
+		CloseScriptEngine(hEngine);		
 	}
+	return 0;
 }
 bool CChildFrame::DebugScript()
 {

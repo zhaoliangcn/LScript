@@ -50,6 +50,4 @@ Release/ScritpEngine.exe
 *.pch
 *.pdb
 *.v12.suo
-
-
-
+inter/*
