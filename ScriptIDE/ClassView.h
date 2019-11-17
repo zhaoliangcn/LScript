@@ -32,9 +32,12 @@ public:
 	void AdjustLayout();
 	void OnChangeVisualStyle();
 
+public:
+	CViewTree m_wndClassView;
+	void ClearClassView();
 protected:
 	CClassToolBar m_wndToolBar;
-	CViewTree m_wndClassView;
+	
 	CImageList m_ClassViewImages;
 	UINT m_nCurrSort;
 

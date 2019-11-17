@@ -120,7 +120,7 @@ int CClassView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	}
 
 	// 填入一些静态树视图数据(此处只需填入虚拟代码，而不是复杂的数据)
-	FillClassView();
+	//FillClassView();
 
 	return 0;
 }
@@ -329,4 +329,9 @@ void CClassView::OnChangeVisualStyle()
 
 	m_wndToolBar.CleanUpLockedImages();
 	m_wndToolBar.LoadBitmap(theApp.m_bHiColorIcons ? IDB_SORT_24 : IDR_SORT, 0, 0, TRUE /* 锁定*/);
+}
+
+void CClassView::ClearClassView()
+{
+	m_wndClassView.DeleteAllItems();
 }

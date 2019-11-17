@@ -65,6 +65,7 @@ public:
 	virtual CString GetFrameText() const;
 	void SetContent(void * Content, size_t ContentLength);
 	bool GetContent(void ** Content, size_t &ContentLength);
+	bool GetSelContent(void**Content, size_t &ContentLength);
 	bool CopySelection();
 	bool CutSelection();
 	bool Paste();
@@ -83,4 +84,7 @@ public:
 	static DWORD WINAPI DebugThread(void*param);
 	HANDLE hthreadDebug;
 	std::string lastFindText;
+	std::string lastReplaceText;
+	std::string lastReplaceToText;
+	bool bUTF8;
 };

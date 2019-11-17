@@ -23,6 +23,7 @@
 #include "MainFrm.h"
 #include "ChildFrm.h"
 #include <propkey.h>
+#include "stdstringext.hpp"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -41,7 +42,7 @@ END_MESSAGE_MAP()
 CScriptIDEDoc::CScriptIDEDoc() 
 {
 	// TODO: 在此添加一次性构造代码
-	Content = 0;
+
 
 }
 
@@ -157,6 +158,9 @@ BOOL CScriptIDEDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	BOOL bRet;
 	//if (!CDocument::OnOpenDocument(lpszPathName))
 	//	return FALSE;
+	void * Content;
+	Content = 0;
+	size_t ContentLength;
 	HANDLE hFile = CreateFileW(lpszPathName, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 	if (INVALID_HANDLE_VALUE != hFile)
 	{
@@ -179,8 +183,21 @@ BOOL CScriptIDEDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	if (child)
 	{
 		if (Content)
-			child->SetContent(Content, ContentLength);
-		free(Content);
+		{
+			if (STDSTRINGEXT::IsTextUTF8((char*)Content, ContentLength))
+			{
+				child->bUTF8 = true;
+				child->SetContent(Content, ContentLength);
+			}			
+			else
+			{
+				child->bUTF8 = false;
+				std::string ContentU = STDSTRINGEXT::AToU((char*)Content);
+				child->SetContent((void*)ContentU.c_str(), ContentU.length());
+			}
+				
+			free(Content);
+		}			
 		ContentLength = 0;
 	}
 	return bRet;
@@ -211,7 +228,15 @@ BOOL CScriptIDEDoc::OnSaveDocument(LPCTSTR lpszPathName)
 			if (INVALID_HANDLE_VALUE != hFile)
 			{
 				DWORD dwWriteCount = 0;
-				bRet = WriteFile(hFile, Content, ContentLen, &dwWriteCount, NULL);
+				if (child->bUTF8)
+				{
+					bRet = WriteFile(hFile, Content, ContentLen, &dwWriteCount, NULL);
+				}					
+				else
+				{
+					std::string ContentU = STDSTRINGEXT::UToA((char*)Content);
+					bRet = WriteFile(hFile, ContentU.c_str(), ContentU.length(), &dwWriteCount, NULL);
+				}
 				CloseHandle(hFile);
 			}
 			free(Content);

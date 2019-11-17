@@ -51,10 +51,11 @@ protected:  // 控件条嵌入成员
 	CMFCToolBarImages m_PanelImages;
 	CMFCRibbonStatusBar  m_wndStatusBar;
 
-	CClassView        m_wndClassView;
+	
 	
 	CPropertiesWnd    m_wndProperties;
 public:
+	CClassView        m_wndClassView;
 	COutputWnd        m_wndOutput;
 	CFileView         m_wndFileView;
 	LScriptDebugger	_scriptDbg;

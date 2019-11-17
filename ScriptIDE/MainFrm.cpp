@@ -324,7 +324,8 @@ void CMainFrame::OnButtonRun()
 	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
 	if (child)
 	{
-		m_wndOutput.ClearDebugOutput();
+		
+		m_wndOutput.m_wndTabs.SetActiveTab(1);
 		child->RunScript();
 	}
 }
@@ -341,9 +342,9 @@ void CMainFrame::OnButtonDebug()
 	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
 	if (child)
 	{
-		_scriptDbg.SetRunMode(RUN_DEBUG);
-		m_wndOutput.ClearDebugOutput();
+		_scriptDbg.SetRunMode(RUN_DEBUG);		
 		_scriptDbg.mainframe = this;
+		m_wndOutput.m_wndTabs.SetActiveTab(1);
 		child->DebugScript();		
 	}
 }
@@ -391,12 +392,26 @@ void CMainFrame::OnEditSelectAll()
 
 void CMainFrame::OnEditFind()
 {
-	CDialogFind finddlg;
-	finddlg.DoModal();
+	
 	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
 	if (child)
 	{
-		child->Find(STDSTRINGEXT::W2UTF(finddlg.text.AllocSysString()).c_str());
+		CDialogFind finddlg;
+		finddlg.text = CString(child->lastFindText.c_str());
+		void *Content = 0;
+		size_t ContentLength = 0;
+		if (child->GetSelContent(&Content, ContentLength))
+		{
+			finddlg.text = CString((char*)Content);
+			free(Content);
+		}		
+		finddlg.DoModal();
+		if (!finddlg.text.IsEmpty())
+		{
+			child->Find(STDSTRINGEXT::W2UTF(finddlg.text.AllocSysString()).c_str());
+			m_wndOutput.m_wndTabs.SetActiveTab(2);
+		}
+
 	}
 }
 
@@ -413,11 +428,23 @@ void CMainFrame::OnEditRepeat()
 
 void CMainFrame::OnEditReplace()
 {
-	CDialogReplace dlgReplace;
-	dlgReplace.DoModal();
+	
+	
 	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
 	if (child)
 	{
+		CDialogReplace dlgReplace;
+		dlgReplace.text = CString(child->lastReplaceText.c_str());
+		dlgReplace.repText = CString(child->lastReplaceToText.c_str());
+		void *Content = 0;
+		size_t ContentLength = 0;
+		if (child->GetSelContent(&Content, ContentLength))
+		{
+			dlgReplace.text = CString((char*)Content);
+			free(Content);
+		}
+		dlgReplace.DoModal();
+		if(!dlgReplace.text.IsEmpty() && dlgReplace.text!= dlgReplace.repText)
 		child->Replace(STDSTRINGEXT::W2UTF(dlgReplace.text.AllocSysString()).c_str(), STDSTRINGEXT::W2UTF(dlgReplace.repText.AllocSysString()).c_str());
 	}
 }

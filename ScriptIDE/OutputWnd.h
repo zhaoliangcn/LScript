@@ -45,10 +45,12 @@ public:
 	void UpdateDebugOutput(const wchar_t * output);
 	void AppendDebugOutput(const wchar_t * output);
 	void ClearDebugOutput();
-
+	void AppendFindOutput(const wchar_t * output);
+	void ClearFindOutput();
+	CMFCTabCtrl	m_wndTabs;
 // 特性
 protected:
-	CMFCTabCtrl	m_wndTabs;
+	
 
 	COutputList m_wndOutputBuild;
 	COutputList m_wndOutputDebug;

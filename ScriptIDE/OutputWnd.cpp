@@ -133,9 +133,9 @@ void COutputWnd::FillDebugWindow()
 
 void COutputWnd::FillFindWindow()
 {
-	m_wndOutputFind.AddString(_T("查找输出正显示在此处。"));
-	m_wndOutputFind.AddString(_T("输出正显示在列表视图的行中"));
-	m_wndOutputFind.AddString(_T("但您可以根据需要更改其显示方式..."));
+	//m_wndOutputFind.AddString(_T("查找输出正显示在此处。"));
+	//m_wndOutputFind.AddString(_T("输出正显示在列表视图的行中"));
+	//m_wndOutputFind.AddString(_T("但您可以根据需要更改其显示方式..."));
 }
 
 void COutputWnd::UpdateFonts()
@@ -163,6 +163,15 @@ void COutputWnd::ClearDebugOutput()
 {
 	while (m_wndOutputDebug.GetCount() > 0)
 		m_wndOutputDebug.DeleteString(0);
+}
+void COutputWnd::AppendFindOutput(const wchar_t * output)
+{
+	m_wndOutputFind.AddString(output);
+}
+void COutputWnd::ClearFindOutput()
+{
+	while (m_wndOutputFind.GetCount() > 0)
+		m_wndOutputFind.DeleteString(0);
 }
 /////////////////////////////////////////////////////////////////////////////
 // COutputList1

@@ -2,9 +2,11 @@
 #include "LScriptDebugger.h"
 #include <algorithm>
 #include "MainFrm.h"
+#include "../include/ScriptEngineDll.h"
 
 LScriptDebugger::LScriptDebugger()
 {
+	hEngine = NULL;
 	Init();
 }
 
@@ -65,8 +67,34 @@ int LScriptDebugger::CheckDebugEvent(const wchar_t * currentScript, int currentL
 		std::wstring mess = L"BreakPointMatched! At Line ";
 		wchar_t buffer[32] = { 0 };
 		mess += _itow(currentLine, buffer,10);
-		if(mainframe)
-		mainframe->m_wndOutput.AppendDebugOutput(mess.c_str());
+		if (mainframe)
+		{
+			mainframe->m_wndOutput.AppendDebugOutput(mess.c_str());
+
+			VTSTRINGS *objs;
+			ScriptEnumObjects(hEngine, &objs);
+			mainframe->m_wndClassView.m_wndClassView.DeleteAllItems();
+			HTREEITEM itemRoot = mainframe->m_wndClassView.m_wndClassView.InsertItem(L"È«¾Ö");
+			mainframe->m_wndClassView.m_wndClassView.SetItemState(itemRoot, TVIS_BOLD, TVIS_BOLD);
+			for (ITSTRINGS it = objs->begin();it != objs->end();it++)
+			{				
+				std::wstring temp = (*it);
+				HTREEITEM item = mainframe->m_wndClassView.m_wndClassView.InsertItem(temp.c_str(), itemRoot);
+				
+				
+/*				std::wstring temp2;
+				size_t pos = temp.find(L",");
+				if (pos != std::wstring::npos)
+				{
+					temp2 = temp.substr(0, pos);
+					temp = temp.substr(pos + 1, temp.length() - pos - 1);
+				}
+				HTREEITEM item=mainframe->m_wndClassView.m_wndClassView.InsertItem(temp.c_str(), itemRoot);			*/	
+			}
+			mainframe->m_wndClassView.m_wndClassView.Expand(itemRoot, TVE_EXPAND);
+			ScriptReleaseObjects(&objs);
+		}
+		
 		WaitDebugEvent(timeOut);
 	}
 	return 0;

@@ -29,7 +29,7 @@ public:
 	std::map<std::wstring, VtScriptBreakPoints> mpBreakPoints;
 	SCRIPTRUNTYPE scriptRunMode;
 	CMainFrame *mainframe;
-
+	HANDLE hEngine;
 #ifdef WIN32
 	HANDLE heventDebug;
 #else 

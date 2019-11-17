@@ -40,6 +40,18 @@ void CDialogReplace::OnShowWindow(BOOL bShow, UINT nStatus)
 {
 	CDialogEx::OnShowWindow(bShow, nStatus);
 	GetDlgItem(IDC_EDIT1)->SetFocus();
+	if (!text.IsEmpty())
+	{
+		GetDlgItem(IDC_EDIT1)->SetWindowTextW(text);
+		((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(0, -1);
+	}
+	if (!repText.IsEmpty())
+	{
+		GetDlgItem(IDC_EDIT2)->SetWindowTextW(repText);
+		GetDlgItem(IDC_EDIT2)->SetFocus();
+		((CEdit*)GetDlgItem(IDC_EDIT2))->SetSel(0, -1);
+	}
+	
 	// TODO: 在此处添加消息处理程序代码
 }
 

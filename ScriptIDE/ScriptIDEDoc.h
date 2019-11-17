@@ -58,8 +58,7 @@ protected:
 public:
 	virtual BOOL OnOpenDocument(LPCTSTR lpszPathName);
 
-	void * Content;
-	size_t ContentLength;
+
 	virtual void OnCloseDocument();
 	virtual BOOL OnSaveDocument(LPCTSTR lpszPathName);
 };

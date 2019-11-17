@@ -59,5 +59,6 @@ void CDialogFind::OnShowWindow(BOOL bShow, UINT nStatus)
 	CDialogEx::OnShowWindow(bShow, nStatus);
 
 	GetDlgItem(IDC_EDIT1)->SetFocus();
-	//GetDlgItem(IDC_EDIT1)->SetCapture();
+	GetDlgItem(IDC_EDIT1)->SetWindowTextW(text);
+	((CEdit*)GetDlgItem(IDC_EDIT1))->SetSel(0, -1);
 }

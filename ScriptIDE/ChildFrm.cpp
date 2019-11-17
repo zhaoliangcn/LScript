@@ -116,6 +116,7 @@ CChildFrame::CChildFrame()
 	m_fnDirect = NULL;
 	m_ptrDirect = NULL;
 	hthreadDebug = NULL;
+	bUTF8 = true;
 }
 
 CChildFrame::~CChildFrame()
@@ -255,11 +256,24 @@ bool CChildFrame::GetContent(void ** Content, size_t & ContentLength)
 	}
 	return false;
 }
-bool CChildFrame::CopySelection()
+bool CChildFrame::GetSelContent(void ** Content, size_t & ContentLength)
 {
-//	int pos = SendEditor(SCI_SETSELECTIONSTART);
-//	int posend= SendEditor(SCI_SETSELECTIONEND);
-	
+	ContentLength = SendEditor(SCI_GETSELTEXT, 0, 0);
+	int total = SendEditor(SCI_GETLENGTH, 0, 0);
+	if (ContentLength <= total)
+	{		
+		*Content = (char *)malloc(ContentLength + 10);
+		if (*Content)
+		{
+			memset(*Content, 0, ContentLength + 10);
+			SendEditor(SCI_GETSELTEXT, 0, (sptr_t)*Content);
+			return true;
+		}
+	}
+	return false;
+}
+bool CChildFrame::CopySelection()
+{	
 	SendEditor(SCI_COPY);
 	return true;
 }
@@ -289,11 +303,18 @@ bool CChildFrame::Find(const char * text)
 		ttf.chrg.cpMin = 0;
 		ttf.chrg.cpMax = SendEditor(SCI_GETLENGTH, 0, 0);
 		ttf.lpstrText = text;
-		SendEditor(SCI_FINDTEXT, SCFIND_REGEXP, (sptr_t)&ttf);
-		SendEditor(SCI_GOTOPOS, ttf.chrgText.cpMin);
-		SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
-		SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
-		return true;
+		int line =SendEditor(SCI_FINDTEXT, SCFIND_REGEXP, (sptr_t)&ttf);
+		if (line >= 0)
+		{
+			SendEditor(SCI_GOTOPOS, ttf.chrgText.cpMin);
+			SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
+			SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
+			CStringA message;
+			message.Format("Find Text \"%s\" At  Pos %d", text, line);
+			((CMainFrame *)AfxGetMainWnd())->m_wndOutput.AppendFindOutput(CString(message));
+			return true;
+		}
+
 	}	
 	return false;
 }
@@ -303,16 +324,25 @@ bool CChildFrame::FindNext()
 	ttf.chrg.cpMin = SendEditor(SCI_GETCURRENTPOS, 0, 0);
 	ttf.chrg.cpMax = SendEditor(SCI_GETLENGTH, 0, 0);
 	ttf.lpstrText = lastFindText.c_str();
-	SendEditor(SCI_FINDTEXT, SCFIND_REGEXP, (sptr_t)&ttf);
-	SendEditor(SCI_GOTOPOS, ttf.chrgText.cpMin);
-	SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
-	SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
+	int line = SendEditor(SCI_FINDTEXT, SCFIND_REGEXP, (sptr_t)&ttf);
+	if (line >= 0)
+	{
+		SendEditor(SCI_GOTOPOS, ttf.chrgText.cpMin);
+		SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
+		SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
+		CStringA message;
+		message.Format("Find Text \"%s\" At Pos %d", lastFindText.c_str(), line);
+		((CMainFrame *)AfxGetMainWnd())->m_wndOutput.AppendFindOutput(CString(message));
+		return true;
+	}
 	return false;
 }
 bool CChildFrame::Replace(const char * text, const char * repText)
 {
 	if (text &&repText)
 	{
+		lastReplaceText = text;
+		lastReplaceToText = repText;
 		Sci_TextToFind  ttf;
 		ttf.chrg.cpMin = 0;
 		ttf.chrg.cpMax = SendEditor(SCI_GETLENGTH, 0, 0);
@@ -326,6 +356,10 @@ bool CChildFrame::Replace(const char * text, const char * repText)
 			SendEditor(SCI_REPLACESEL, 0, (sptr_t)repText);
 			SendEditor(SCI_SETSELECTIONSTART, ttf.chrgText.cpMin);
 			SendEditor(SCI_SETSELECTIONEND, ttf.chrgText.cpMax);
+
+			CStringA message;
+			message.Format("Replace Text \"%s\" With \"%s\"At  Pos %d", lastReplaceText.c_str(), lastReplaceToText.c_str(), find);
+			((CMainFrame *)AfxGetMainWnd())->m_wndOutput.AppendFindOutput(CString(message));
 			return true;
 		}
 	}
@@ -352,6 +386,8 @@ DWORD WINAPI CChildFrame::DebugThread(void*param)
 			CString filename = threadparam->filename;
 			ScriptSetScriptFileName(hEngine, filename);
 			ScriptSetDebugger(hEngine, &((CMainFrame *)threadparam->mainframe)->_scriptDbg);
+			((CMainFrame *)threadparam->mainframe)->_scriptDbg.hEngine = hEngine;
+			((CMainFrame *)threadparam->mainframe)->m_wndOutput.ClearDebugOutput();
 			ScriptRegisterUICallBack(hEngine, (void *)threadparam->mainframe, (UICallBack)EditorUIMessage);
 			ScriptDebugMemoryScript(hEngine, (wchar_t *)STDSTRINGEXT::UTF2W((const char *)threadparam->content).c_str());
 		}
@@ -365,8 +401,8 @@ bool CChildFrame::DebugScript()
 	size_t len = 0;
 	THREAD_PARAM *param=new THREAD_PARAM;
 	param->mainframe =(CMainFrame*) AfxGetMainWnd();
-	param->child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
-	param->filename = ((CMainFrame *)AfxGetMainWnd())->MDIGetActive()->GetActiveView()->GetDocument()->GetPathName();
+	param->child = this;
+	param->filename = GetActiveView()->GetDocument()->GetPathName();
 	param->child->GetContent(&Content, len);
 	param->content = (char*)Content;
 	free(Content);
@@ -393,10 +429,12 @@ bool CChildFrame::RunScript()
 		void *Content;
 		size_t len = 0;
 		if (GetContent(&Content, len))
-		{
-			CString filename = ((CMainFrame *)AfxGetMainWnd())->MDIGetActive()->GetActiveView()->GetDocument()->GetPathName();
+		{			
+			CString filename = GetActiveView()->GetDocument()->GetPathName();
 			ScriptSetScriptFileName(hEngine, filename);
 			//ScriptSetDebugger(hEngine, &((CMainFrame *)AfxGetMainWnd())->_scriptDbg);
+			((CMainFrame *)AfxGetMainWnd())->m_wndClassView.ClearClassView();
+			((CMainFrame *)AfxGetMainWnd())->m_wndOutput.ClearDebugOutput();
 			ScriptRegisterUICallBack(hEngine, (void *)AfxGetMainWnd(), (UICallBack)EditorUIMessage);
 			ScriptDebugMemoryScript(hEngine, (wchar_t *)STDSTRINGEXT::UTF2W((const char *)Content).c_str());
 			free(Content);
@@ -427,7 +465,7 @@ LRESULT CChildFrame::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 				// 确定是页边点击事件
 				const int line = SendEditor(SCI_LINEFROMPOSITION, notify->position);
 				int nMask = SendEditor(SCI_MARKERGET, line);
-				CString filename = ((CMainFrame *)AfxGetMainWnd())->MDIGetActive()->GetActiveView()->GetDocument()->GetPathName();
+				CString filename = GetActiveView()->GetDocument()->GetPathName();
 				if (nMask)
 				{
 					SendEditor(SCI_MARKERDELETE, line);
