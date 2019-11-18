@@ -36,6 +36,16 @@ void CFileView::UpdateOpenedFile(const wchar_t * filePathName, BOOL bOpen)
 {
 	if (bOpen)
 	{
+		HTREEITEM child = m_wndFileView.GetChildItem(m_wndFileView.GetRootItem());
+		while (child)
+		{
+			CString fileName = m_wndFileView.GetItemText(child);
+			if (fileName == filePathName)
+			{
+				return;
+			}
+			child = m_wndFileView.GetNextSiblingItem(child);
+		}
 		m_wndFileView.InsertItem(filePathName, 1, 1, m_wndFileView.GetRootItem());		
 	}
 	else

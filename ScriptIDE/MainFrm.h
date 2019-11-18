@@ -82,6 +82,10 @@ public:
 	afx_msg void OnEditFind();
 	afx_msg void OnEditRepeat();
 	afx_msg void OnEditReplace();
+	afx_msg void OnCheckFileview();
+	afx_msg void OnUpdateCheckFileview(CCmdUI* pCmdUI);
+	afx_msg void OnCheckClassview();
+	afx_msg void OnUpdateCheckClassview(CCmdUI* pCmdUI);
 };
 
 

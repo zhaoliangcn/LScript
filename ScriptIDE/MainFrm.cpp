@@ -44,6 +44,10 @@ BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWndEx)
 	ON_COMMAND(ID_EDIT_FIND, &CMainFrame::OnEditFind)
 	ON_COMMAND(ID_EDIT_REPEAT, &CMainFrame::OnEditRepeat)
 	ON_COMMAND(ID_EDIT_REPLACE, &CMainFrame::OnEditReplace)
+	ON_COMMAND(ID_CHECK_FILEVIEW, &CMainFrame::OnCheckFileview)
+	ON_UPDATE_COMMAND_UI(ID_CHECK_FILEVIEW, &CMainFrame::OnUpdateCheckFileview)
+	ON_COMMAND(ID_CHECK_CLASSVIEW, &CMainFrame::OnCheckClassview)
+	ON_UPDATE_COMMAND_UI(ID_CHECK_CLASSVIEW, &CMainFrame::OnUpdateCheckClassview)
 END_MESSAGE_MAP()
 
 // CMainFrame 构造/析构
@@ -446,5 +450,58 @@ void CMainFrame::OnEditReplace()
 		dlgReplace.DoModal();
 		if(!dlgReplace.text.IsEmpty() && dlgReplace.text!= dlgReplace.repText)
 		child->Replace(STDSTRINGEXT::W2UTF(dlgReplace.text.AllocSysString()).c_str(), STDSTRINGEXT::W2UTF(dlgReplace.repText.AllocSysString()).c_str());
+	}
+}
+
+
+
+
+void CMainFrame::OnCheckFileview()
+{
+
+	CMFCRibbonBar *pRibbonBar = GetRibbonBar();
+	ASSERT_VALID(pRibbonBar);
+	//获取RibbonComboBox控件指针
+	CMFCRibbonCheckBox *pCheckbox = DYNAMIC_DOWNCAST(CMFCRibbonCheckBox, pRibbonBar->FindByID(ID_CHECK_FILEVIEW));
+	if (!pCheckbox->IsChecked())
+	{
+		if (!m_wndFileView.IsVisible())
+		{
+			m_wndFileView.SetPaneStyle(WS_VISIBLE);
+			m_wndFileView.ShowPane(TRUE, FALSE, TRUE);
+		}
+	}
+	else
+	{
+		m_wndFileView.ShowPane(FALSE, FALSE, FALSE);
+	}
+}
+void CMainFrame::OnUpdateCheckFileview(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetCheck(m_wndFileView.IsVisible());
+	
+}
+void CMainFrame::OnUpdateCheckClassview(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetCheck(m_wndClassView.IsVisible());
+}
+void CMainFrame::OnCheckClassview()
+{
+
+	CMFCRibbonBar *pRibbonBar = GetRibbonBar();
+	ASSERT_VALID(pRibbonBar);
+	//获取RibbonComboBox控件指针
+	CMFCRibbonCheckBox *pCheckbox = DYNAMIC_DOWNCAST(CMFCRibbonCheckBox, pRibbonBar->FindByID(ID_CHECK_CLASSVIEW));
+	if (!pCheckbox->IsChecked())
+	{
+		if (!m_wndClassView.IsVisible())
+		{
+			m_wndClassView.SetPaneStyle(WS_VISIBLE);
+			m_wndClassView.ShowPane(TRUE, FALSE, TRUE);
+		}
+	}
+	else
+	{
+		m_wndClassView.ShowPane(FALSE, FALSE, FALSE);
 	}
 }

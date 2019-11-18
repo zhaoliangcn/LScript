@@ -76,8 +76,10 @@ void CChildFrame::UpdateLineNumberWidth(void)
 
 void CChildFrame::InitEditor()
 {
-	const char* g_szKeywords = "清空 保留 关闭 重启 弹出 打印 显示 打开 运行 捕获 删除 读取 写入 复制 定位 执行 比较 计算 连接 申请 释放 定义 如果 开始 结束 调用 查找 替换 取子串 插入 匹配 导入 当 移动 取大小 取长度 注册 发送 接收 监听 设置 睡眠 等待 枚举 否则 刷新 生成 休眠 取元素 遍历 排序 格式化 克隆 获取 继承 加密 解密 求哈希 转换 分割 提交 加载 退出 画 压入 继续 跳出 开关 若 锁定 解锁 压缩 解压 创建 循环 公开 私有 保存 返回 编码 解码 输出 查询 执行 关闭 上传 下载 播放 停止 说 invalid clear reserved shutdown reboot popup print show open run capture delete read write copy seek do compare compute connect acquire release define test if start end call find replace getsubstring insert match import while move getsize getlength register send receive watch set sleep wait enum otherwise else refresh generate suspend getelement traverse sort format clone get inherit encrypt decrypt hash transform split post load exit draw push continue break switch case lock unlock compress uncompress create loop public private save return encode decode put query execute close upload download erase play stop speak";
-	const char* g_szKeywords2 = "计算机 电脑 文件 注册表 网络 代码 消息框 进程 程序 脚本 字符串 数值 内存 状态 结果 函数 整数 浮点数 算式 表 元素 正则表达式 类 类实例 成员 库 映射 三元映射 空 枚举值 指针 句柄 C整数 C字符指针 C宽字符指针 C无符号整数 C函数 全局命令 地址 网络连接 时间 当前时间 定时器 图片 音频 视频 目录 子目录 XML 线程 画布 窗体 点 直线 曲线 椭圆 圆 矩形 多边形 消息处理 用户输入 随机数 Sqlite数据库 属性 环境变量 管道 HTTP连接 JSON BSON PYTHON 扩展 结构体 GPIO 表达式 数组 循环 类型 静态整数 静态浮点数 静态字符串 条件语句 主函数 相等 不相等 大于 小于 真 假 匹配 不匹配 找到 没找到 命令行参数 当前目录 调用堆栈 大整数 OLEWORD OLEEXCEL OLEPPT 单元格 操作系统信息 整数矩阵 套接字 HTTP请求 HTTP响应 异步TCP服务器 异步TCP客户端 WMI ftpserver ftpclient 邮件客户端 扩展对象 computer computer file registry network code messagebox process process script string stringarray number memory state result function int double expression table element regexp class classinstance member library map threeelementmap  enum void color int64 OLEWORD  OLEPPT  osinfo intmatrix socket httprequest httpresponse asynctcpserver asynctcpclient WMI ftpserver ftpclient smtpclient pointer handle Cint Cpchar Cpwchar Cuint Cfunction Cchar Cunsignedchar Cshort Cunsignedshort Clong Cunsignedlong globalcommand  address netconnection time currenttime timer picture voice video directory subdirectory  thread canvas window point line arc ellipse circle rect polygon msgprocessor userinput randomnumber sqlitedb attribute value node environmentvariable pipe httpconnection httpserver json bson python extensionmodule struct structinstance gpio expressions array while type staticint staticdouble staticstring if main sharememory database recordset fieldname fieldvalue nextline   big lessthan true false matched notmatched finded notfinded readonly readwrite append begin end readonly hide  archive system temporary createtime accesstime modifytime drive filename path extension message hour minute second upper lower reverse  ip port pid commandparameter currentscriptfile currentscriptpath currentdirectory callstack package line extobj";//字符串数组
+	const char* g_szKeywords = "清空 保留 关闭 重启 弹出 打印 显示 打开 运行 捕获 删除 读取 写入 复制 定位 执行 比较 计算 连接 申请 释放 定义 如果 开始 结束 调用 查找 替换 取子串 插入 匹配 导入 当 移动 取大小 取长度 注册 发送 接收 监听 设置 睡眠 等待 枚举 否则 刷新 生成 休眠 取元素 遍历 排序 格式化 克隆 获取 继承 加密 解密 求哈希 转换 分割 提交 加载 退出 画 压入 继续 跳出 开关 若 锁定 解锁 压缩 解压 创建 循环 公开 私有 保存 返回 编码 解码 输出 查询 执行 关闭 上传 下载 播放 停止 说 "
+		"invalid clear reserved shutdown reboot popup print show open run capture delete read write copy seek do compare compute connect acquire release define test if start end call find replace getsubstring insert match import while move getsize getlength register send receive watch set sleep wait enum otherwise else refresh generate suspend getelement traverse sort format clone get inherit encrypt decrypt hash transform split post load exit draw push continue break switch case lock unlock compress uncompress create loop public private save return encode decode put query execute close upload download erase play stop speak";
+	const char* g_szKeywords2 = "计算机 电脑 文件 注册表 网络 代码 消息框 进程 程序 脚本 字符串 数值 内存 状态 结果 函数 整数 浮点数 算式 表 列表 栈 队列 元素 正则表达式 类 类实例 成员 库 映射 三元映射 空 枚举值 指针 句柄 C整数 C字符指针 C宽字符指针 C无符号整数 C函数 全局命令 地址 网络连接 时间 当前时间 定时器 图片 音频 视频 目录 子目录 XML 线程 画布 窗体 点 直线 曲线 椭圆 圆 矩形 多边形 消息处理 用户输入 随机数 Sqlite数据库 属性 环境变量 管道 HTTP连接 JSON BSON PYTHON 扩展 结构体 GPIO 表达式 数组 循环 类型 静态整数 静态浮点数 静态字符串 条件语句 主函数 相等 不相等 大于 小于 真 假 匹配 不匹配 找到 没找到 命令行参数 当前目录 调用堆栈 大整数 OLEWORD OLEEXCEL OLEPPT 单元格 操作系统信息 整数矩阵 套接字 HTTP请求 HTTP响应 异步TCP服务器 异步TCP客户端 WMI ftpserver ftpclient 邮件客户端 扩展对象 "
+		"computer computer file registry network code messagebox process process script string stringarray number memory state result function int double expression table list stack queue element regexp class classinstance member library map threeelementmap  enum void color int64 OLEWORD  OLEPPT  osinfo intmatrix socket httprequest httpresponse asynctcpserver asynctcpclient WMI ftpserver ftpclient smtpclient pointer handle Cint Cpchar Cpwchar Cuint Cfunction Cchar Cunsignedchar Cshort Cunsignedshort Clong Cunsignedlong globalcommand  address netconnection time currenttime timer picture voice video directory subdirectory  thread canvas window point line arc ellipse circle rect polygon msgprocessor userinput randomnumber sqlitedb attribute value node environmentvariable pipe httpconnection httpserver json bson python extensionmodule struct structinstance gpio expressions array while type staticint staticdouble staticstring if main sharememory database recordset fieldname fieldvalue nextline   big lessthan true false matched notmatched finded notfinded readonly readwrite append begin end readonly hide  archive system temporary createtime accesstime modifytime drive filename path extension message hour minute second upper lower reverse  ip port pid commandparameter currentscriptfile currentscriptpath currentdirectory callstack package line extobj";//字符串数组
 	SendEditor(SCI_SETCODEPAGE, SC_CP_UTF8);
 	SendEditor(SCI_STYLESETFONT, STYLE_DEFAULT, (sptr_t)"Courier New");
 	SendEditor(SCI_STYLESETSIZE, STYLE_DEFAULT, 14);
@@ -464,18 +466,31 @@ LRESULT CChildFrame::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 				notify->nmhdr.idFrom == SCINT_ID) {
 				// 确定是页边点击事件
 				const int line = SendEditor(SCI_LINEFROMPOSITION, notify->position);
+				int pos0 = SendEditor(SCI_FINDCOLUMN, line, 0);			// 取得当前行的最左边位置的开始pos
 				int nMask = SendEditor(SCI_MARKERGET, line);
-				CString filename = GetActiveView()->GetDocument()->GetPathName();
-				if (nMask)
+				char word[1000] = { 0 }; //保存当前光标下的单词 
+				TextRange tr;    //用于SCI_GETTEXTRANGE命令
+				int line_length = SendEditor(SCI_LINELENGTH, line);		// 当前行长度
+				tr.chrg.cpMin = pos0;  //设定单词区间，取出单词 
+				tr.chrg.cpMax = pos0+ line_length;
+				tr.lpstrText = word;
+				SendEditor(SCI_GETTEXTRANGE, 0, sptr_t(&tr));
+				std::string temp = word;
+				STDSTRINGEXT::trim(temp);
+				if (!temp.empty())
 				{
-					SendEditor(SCI_MARKERDELETE, line);
-					
-					((CMainFrame *)AfxGetMainWnd())->_scriptDbg.SetBreakPoint(filename, line, false);
-				}
-				else
-				{
-					SendEditor(SCI_MARKERADD, line);
-					((CMainFrame *)AfxGetMainWnd())->_scriptDbg.SetBreakPoint(filename, line, true);
+					CString filename = GetActiveView()->GetDocument()->GetPathName();
+					if (nMask)
+					{
+						SendEditor(SCI_MARKERDELETE, line);
+
+						((CMainFrame *)AfxGetMainWnd())->_scriptDbg.SetBreakPoint(filename, line, false);
+					}
+					else
+					{
+						SendEditor(SCI_MARKERADD, line);
+						((CMainFrame *)AfxGetMainWnd())->_scriptDbg.SetBreakPoint(filename, line, true);
+					}
 				}			
 					
 			}

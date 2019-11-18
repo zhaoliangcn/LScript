@@ -20,6 +20,7 @@
 #define IDR_ScriptIDETYPE               130
 #define ID_WINDOW_MANAGER               131
 #define ID_VIEW_FILEVIEW                133
+#define ID_CHECK_FILEVIEW               133
 #define ID_VIEW_CLASSVIEW               134
 #define ID_PROPERTIES                   135
 #define ID_OPEN                         136
@@ -104,13 +105,15 @@
 #define ID_BUTTON4                      32775
 #define ID_BUTTON5                      32776
 #define ID_BUTTON6                      32778
+#define ID_CHECK2                       32780
+#define ID_CHECK_CLASSVIEW              32780
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        315
-#define _APS_NEXT_COMMAND_VALUE         32779
+#define _APS_NEXT_COMMAND_VALUE         32781
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

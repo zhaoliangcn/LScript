@@ -33,11 +33,11 @@ int LScriptDebugger::SetBreakPoint(const wchar_t * scriptFile, int linenumber, b
 			if (set)
 			{
 				breakpoints.push_back(linenumber);
-			}
-			else
-			{
-				breakpoints.erase(it);
-			}
+			}			
+		}
+		else
+		{
+			breakpoints.erase(it);
 		}
 		
 	}
@@ -66,7 +66,7 @@ int LScriptDebugger::CheckDebugEvent(const wchar_t * currentScript, int currentL
 	{
 		std::wstring mess = L"BreakPointMatched! At Line ";
 		wchar_t buffer[32] = { 0 };
-		mess += _itow(currentLine, buffer,10);
+		mess += _itow(currentLine+1, buffer,10);
 		if (mainframe)
 		{
 			mainframe->m_wndOutput.AppendDebugOutput(mess.c_str());

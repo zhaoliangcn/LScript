@@ -216,6 +216,7 @@ BOOL CScriptIDEDoc::OnSaveDocument(LPCTSTR lpszPathName)
 {
 	// TODO: 在此添加专用代码和/或调用基类
 	BOOL bRet;
+	((CMainFrame *)AfxGetMainWnd())->m_wndFileView.UpdateOpenedFile(GetPathName(), FALSE);
 	CChildFrame * child =(CChildFrame * )((CMainFrame *) AfxGetMainWnd())->MDIGetActive();
 	if (child)
 	{
@@ -224,7 +225,7 @@ BOOL CScriptIDEDoc::OnSaveDocument(LPCTSTR lpszPathName)
 		child->GetContent(&Content, ContentLen);
 		if (Content)
 		{
-			HANDLE hFile = CreateFileW(lpszPathName, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+			HANDLE hFile = CreateFileW(lpszPathName, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 			if (INVALID_HANDLE_VALUE != hFile)
 			{
 				DWORD dwWriteCount = 0;
@@ -240,6 +241,7 @@ BOOL CScriptIDEDoc::OnSaveDocument(LPCTSTR lpszPathName)
 				CloseHandle(hFile);
 			}
 			free(Content);
+			((CMainFrame *)AfxGetMainWnd())->m_wndFileView.UpdateOpenedFile(lpszPathName, TRUE);
 			return bRet;
 		}
 	}
