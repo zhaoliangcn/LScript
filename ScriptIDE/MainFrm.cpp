@@ -48,6 +48,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWndEx)
 	ON_UPDATE_COMMAND_UI(ID_CHECK_FILEVIEW, &CMainFrame::OnUpdateCheckFileview)
 	ON_COMMAND(ID_CHECK_CLASSVIEW, &CMainFrame::OnCheckClassview)
 	ON_UPDATE_COMMAND_UI(ID_CHECK_CLASSVIEW, &CMainFrame::OnUpdateCheckClassview)
+	ON_COMMAND(ID_OLE_INSERT_NEW, &CMainFrame::OnOleInsertNew)
+	ON_COMMAND(ID_INSERT_CLASS_SNIPPIT, &CMainFrame::OnInsertClassSnippit)
 END_MESSAGE_MAP()
 
 // CMainFrame 构造/析构
@@ -348,6 +350,7 @@ void CMainFrame::OnButtonDebug()
 	{
 		_scriptDbg.SetRunMode(RUN_DEBUG);		
 		_scriptDbg.mainframe = this;
+		_scriptDbg.child = child;
 		m_wndOutput.m_wndTabs.SetActiveTab(1);
 		child->DebugScript();		
 	}
@@ -503,5 +506,25 @@ void CMainFrame::OnCheckClassview()
 	else
 	{
 		m_wndClassView.ShowPane(FALSE, FALSE, FALSE);
+	}
+}
+
+
+void CMainFrame::OnOleInsertNew()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->InsertFunctiondef();
+	}
+}
+
+
+void CMainFrame::OnInsertClassSnippit()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	if (child)
+	{
+		child->InsertClassDef();
 	}
 }

@@ -102,10 +102,10 @@
 #define ID_BUTTON3                      32773
 #define ID_BUTTON_CONTINUE              32773
 #define ID_BUTTON2                      32774
+#define ID_INSERT_CLASS_SNIPPIT         32774
 #define ID_BUTTON4                      32775
 #define ID_BUTTON5                      32776
 #define ID_BUTTON6                      32778
-#define ID_CHECK2                       32780
 #define ID_CHECK_CLASSVIEW              32780
 
 // Next default values for new objects

@@ -75,6 +75,9 @@ public:
 	bool Replace(const char * text, const char* repText);
 	bool RunScript();
 	bool DebugScript();
+	bool SetCurrentLine(int line);
+	bool InsertFunctiondef();
+	bool InsertClassDef();
 	SciFnDirect m_fnDirect;
 	sptr_t m_ptrDirect;
 	sptr_t SendEditor(unsigned int iMessage, uptr_t wParam = 0, sptr_t lParam = 0);

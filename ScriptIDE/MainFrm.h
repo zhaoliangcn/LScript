@@ -86,6 +86,8 @@ public:
 	afx_msg void OnUpdateCheckFileview(CCmdUI* pCmdUI);
 	afx_msg void OnCheckClassview();
 	afx_msg void OnUpdateCheckClassview(CCmdUI* pCmdUI);
+	afx_msg void OnOleInsertNew();
+	afx_msg void OnInsertClassSnippit();
 };
 
 

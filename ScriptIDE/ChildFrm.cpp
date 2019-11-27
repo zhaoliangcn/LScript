@@ -109,6 +109,10 @@ void CChildFrame::InitEditor()
 	SendEditor(SCI_SETMARGINMASKN, 1, 0x01);
 	SendEditor(SCI_SETMARGINSENSITIVEN, 1, TRUE); //响应鼠标消息
 
+	//当前行高亮
+	SendEditor(SCI_SETCARETLINEVISIBLE, TRUE);
+	SendEditor(SCI_SETCARETLINEBACK, 0xb0ffff);
+
 }
 
 
@@ -423,6 +427,28 @@ bool CChildFrame::DebugScript()
 	}
 	return true;
 }
+bool CChildFrame::SetCurrentLine(int line)
+{
+	//使光标移动到当前行，并让当前行处于选定状态，高亮显示
+	int pos = SendEditor(SCI_POSITIONFROMLINE, line-1);
+	SendEditor(SCI_SETCURRENTPOS, pos );
+	SendEditor(SCI_SETSEL, pos , pos );
+	return true;
+}
+bool CChildFrame::InsertFunctiondef()
+{
+	int pos = SendEditor(SCI_GETCURRENTPOS, 0, 0);
+	SendEditor(SCI_SETSEL, pos + 1, pos + 1);
+	SendEditor(SCI_REPLACESEL, pos, (LPARAM) "define:function,myfunc\r\n\r\nend\r\n");
+	return true;
+}
+bool CChildFrame::InsertClassDef()
+{
+	int pos = SendEditor(SCI_GETCURRENTPOS, 0, 0);
+	SendEditor(SCI_SETSEL, pos + 1, pos + 1);
+	SendEditor(SCI_REPLACESEL, pos, (LPARAM) "define:class,myclass\r\npublic:\r\n\r\nend\r\n");
+	return true;
+}
 bool CChildFrame::RunScript()
 {
 	HANDLE hEngine = CreateScriptEngine();
@@ -488,7 +514,10 @@ LRESULT CChildFrame::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 					}
 					else
 					{
+						SendEditor(SCI_MARKERSETFORE, 0, 0x0000ff);
+						SendEditor(SCI_MARKERSETBACK, 0, 0x0000ff);						
 						SendEditor(SCI_MARKERADD, line);
+						
 						((CMainFrame *)AfxGetMainWnd())->_scriptDbg.SetBreakPoint(filename, line, true);
 					}
 				}			

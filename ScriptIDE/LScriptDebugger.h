@@ -6,6 +6,7 @@
 #include <map>
 
 class CMainFrame;
+class CChildFrame;
 typedef std::vector<int > VtScriptBreakPoints;
 typedef std::vector<int >::iterator ItScriptBreakPoints;
 class CMiniScriptDebuggerDlg;
@@ -29,6 +30,7 @@ public:
 	std::map<std::wstring, VtScriptBreakPoints> mpBreakPoints;
 	SCRIPTRUNTYPE scriptRunMode;
 	CMainFrame *mainframe;
+	CChildFrame * child;
 	HANDLE hEngine;
 #ifdef WIN32
 	HANDLE heventDebug;

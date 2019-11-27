@@ -2,6 +2,7 @@
 #include "LScriptDebugger.h"
 #include <algorithm>
 #include "MainFrm.h"
+#include "ChildFrm.h"
 #include "../include/ScriptEngineDll.h"
 
 LScriptDebugger::LScriptDebugger()
@@ -70,6 +71,8 @@ int LScriptDebugger::CheckDebugEvent(const wchar_t * currentScript, int currentL
 		if (mainframe)
 		{
 			mainframe->m_wndOutput.AppendDebugOutput(mess.c_str());
+			if(child)
+				child->SetCurrentLine(currentLine + 1);
 
 			VTSTRINGS *objs;
 			ScriptEnumObjects(hEngine, &objs);

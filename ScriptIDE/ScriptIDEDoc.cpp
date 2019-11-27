@@ -169,9 +169,10 @@ BOOL CScriptIDEDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		DWORD dwReadCount = 0;
 		DWORD dwWriteCount = 0;
 		dwSize = GetFileSize(hFile, NULL);
-		Content = (unsigned char *)malloc(dwSize);
+		Content = (unsigned char *)malloc(dwSize+1);
 		if (Content)
 		{
+			memset(Content, 0, dwSize + 1);
 			bRet = ReadFile(hFile, Content, dwSize, &dwReadCount, NULL);
 
 			ContentLength = dwSize;
