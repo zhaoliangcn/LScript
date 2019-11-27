@@ -187,6 +187,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CDialogFind.h" />
+    <ClInclude Include="CDialogInsertClass.h" />
+    <ClInclude Include="CDialogInsertFunction.h" />
     <ClInclude Include="CDialogReplace.h" />
     <ClInclude Include="ChildFrm.h" />
     <ClInclude Include="ClassView.h" />
@@ -205,6 +207,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CDialogFind.cpp" />
+    <ClCompile Include="CDialogInsertClass.cpp" />
+    <ClCompile Include="CDialogInsertFunction.cpp" />
     <ClCompile Include="CDialogReplace.cpp" />
     <ClCompile Include="ChildFrm.cpp" />
     <ClCompile Include="ClassView.cpp" />

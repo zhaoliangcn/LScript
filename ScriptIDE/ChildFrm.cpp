@@ -18,6 +18,8 @@
 #include "ChildFrm.h"
 #include "../include/ScriptEngineDll.h"
 #pragma comment(lib,"ScriptEngineDll.lib")
+#include "CDialogInsertFunction.h"
+#include "CDialogInsertClass.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -437,17 +439,44 @@ bool CChildFrame::SetCurrentLine(int line)
 }
 bool CChildFrame::InsertFunctiondef()
 {
-	int pos = SendEditor(SCI_GETCURRENTPOS, 0, 0);
-	SendEditor(SCI_SETSEL, pos + 1, pos + 1);
-	SendEditor(SCI_REPLACESEL, pos, (LPARAM) "define:function,myfunc\r\n\r\nend\r\n");
-	return true;
+	std::string strfuncdef;
+	CDialogInsertFunction dlg;
+	if (IDOK == dlg.DoModal())
+	{
+		strfuncdef = "define:function,";
+		if (dlg.funcname.IsEmpty())
+			strfuncdef += "myfunc";
+		else
+			strfuncdef += STDSTRINGEXT::WToA(dlg.funcname.AllocSysString());
+		strfuncdef += "\r\n\r\nend\r\n";
+
+		int pos = SendEditor(SCI_GETCURRENTPOS, 0, 0);
+		SendEditor(SCI_SETSEL, pos + 1, pos + 1);
+		SendEditor(SCI_REPLACESEL, pos, (LPARAM)strfuncdef.c_str());
+		return true;
+	}
+	return false;
+	
+
 }
 bool CChildFrame::InsertClassDef()
 {
-	int pos = SendEditor(SCI_GETCURRENTPOS, 0, 0);
-	SendEditor(SCI_SETSEL, pos + 1, pos + 1);
-	SendEditor(SCI_REPLACESEL, pos, (LPARAM) "define:class,myclass\r\npublic:\r\n\r\nend\r\n");
-	return true;
+	CDialogInsertClass dlg;
+	if (IDOK == dlg.DoModal())
+	{
+		std::string strclassname;
+		strclassname = "define:class,";
+		if (dlg.classname.IsEmpty())
+			strclassname += "myclass";
+		else
+			strclassname += STDSTRINGEXT::WToA(dlg.classname.AllocSysString());
+		strclassname += "\r\npublic:\r\n\r\n\r\nend\r\n";
+		int pos = SendEditor(SCI_GETCURRENTPOS, 0, 0);
+		SendEditor(SCI_SETSEL, pos + 1, pos + 1);
+		SendEditor(SCI_REPLACESEL, pos, (LPARAM)strclassname.c_str());
+		return true;
+	}
+	return false;
 }
 bool CChildFrame::RunScript()
 {

@@ -94,6 +94,8 @@
 #define IDD_DIALOG_FIND                 311
 #define IDD_DIALOG1                     313
 #define IDD_DIALOG_REPLACE              313
+#define IDD_DIALOG_INSERT_FUNCTION      315
+#define IDD_DIALOG_INSERT_ClASS         317
 #define IDC_EDIT1                       1000
 #define IDC_EDIT2                       1001
 #define ID_WRITE_PASTEASHYPERLINK       32770
@@ -112,7 +114,7 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        315
+#define _APS_NEXT_RESOURCE_VALUE        319
 #define _APS_NEXT_COMMAND_VALUE         32781
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
