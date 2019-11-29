@@ -536,9 +536,10 @@ void CMainFrame::OnButtonRunInConsole()
 {
 	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
 	child->GetActiveView()->GetDocument()->DoFileSave();
-	CString filename = child->GetActiveView()->GetDocument()->GetPathName();
+	CString filename;
 	wchar_t path[MAX_PATH] = { 0 };
 	GetCurrentModulePath(path, MAX_PATH);
-	wcscat_s(path, MAX_PATH,L"ScriptEngine.exe");
+	wcscat_s(path, MAX_PATH, L"ScriptEngine.exe");
+	filename.Format(L"\"%s\"", child->GetActiveView()->GetDocument()->GetPathName());
 	LaunchProcess(path, filename.AllocSysString());
 }
