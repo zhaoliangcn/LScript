@@ -20,6 +20,7 @@
 #include "CDialogFind.h"
 #include "CDialogReplace.h"
 #include "stdstringext.hpp"
+#include "../include/commonutil.hpp"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -50,6 +51,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWndEx)
 	ON_UPDATE_COMMAND_UI(ID_CHECK_CLASSVIEW, &CMainFrame::OnUpdateCheckClassview)
 	ON_COMMAND(ID_OLE_INSERT_NEW, &CMainFrame::OnOleInsertNew)
 	ON_COMMAND(ID_INSERT_CLASS_SNIPPIT, &CMainFrame::OnInsertClassSnippit)
+	ON_COMMAND(ID_BUTTON_RUN_IN_CONSOLE, &CMainFrame::OnButtonRunInConsole)
 END_MESSAGE_MAP()
 
 // CMainFrame 构造/析构
@@ -527,4 +529,16 @@ void CMainFrame::OnInsertClassSnippit()
 	{
 		child->InsertClassDef();
 	}
+}
+
+
+void CMainFrame::OnButtonRunInConsole()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	child->GetActiveView()->GetDocument()->DoFileSave();
+	CString filename = child->GetActiveView()->GetDocument()->GetPathName();
+	wchar_t path[MAX_PATH] = { 0 };
+	GetCurrentModulePath(path, MAX_PATH);
+	wcscat_s(path, MAX_PATH,L"ScriptEngine.exe");
+	LaunchProcess(path, filename.AllocSysString());
 }

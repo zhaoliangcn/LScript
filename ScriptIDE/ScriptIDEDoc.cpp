@@ -169,10 +169,10 @@ BOOL CScriptIDEDoc::OnOpenDocument(LPCTSTR lpszPathName)
 		DWORD dwReadCount = 0;
 		DWORD dwWriteCount = 0;
 		dwSize = GetFileSize(hFile, NULL);
-		Content = (unsigned char *)malloc(dwSize+1);
+		Content = (unsigned char *)malloc(dwSize+10);
 		if (Content)
 		{
-			memset(Content, 0, dwSize + 1);
+			memset(Content, 0, dwSize + 10);
 			bRet = ReadFile(hFile, Content, dwSize, &dwReadCount, NULL);
 
 			ContentLength = dwSize;
@@ -197,10 +197,12 @@ BOOL CScriptIDEDoc::OnOpenDocument(LPCTSTR lpszPathName)
 				child->SetContent((void*)ContentU.c_str(), ContentU.length());
 			}
 				
-			free(Content);
+			
 		}			
 		ContentLength = 0;
 	}
+	if(Content)
+		free(Content);
 	return bRet;
 }
 

@@ -1,4 +1,6 @@
 #scp
 #scpeng
+load:extobj,OS
 #reboot:computer
+define:computer,computer
 computer.reboot()

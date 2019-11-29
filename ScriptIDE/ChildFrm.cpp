@@ -245,8 +245,20 @@ CString CChildFrame::GetFrameText() const
 
 void CChildFrame::SetContent(void * Content, size_t ContentLength)
 {
-	if(Content && ContentLength>0)
-	SendEditor(SCI_APPENDTEXT, ContentLength, (sptr_t)Content);
+	if (Content && ContentLength > 0)
+	{
+		SendEditor(SCI_APPENDTEXT, ContentLength, (sptr_t)Content);
+		if (stricmp((char*)Content, "#scp\r\n#scpeng\r\n") == 0)
+		{
+			int realLength = SendEditor(SCI_GETLENGTH, 0, 0);
+			SendEditor(SCI_GOTOPOS, realLength + 1);
+			SendEditor(SCI_SETSELECTIONSTART, realLength + 1);
+			SendEditor(SCI_SETSELECTIONEND, realLength + 1);
+			SendEditor(SCI_SETFOCUS, true);
+		}
+
+	}
+
 }
 
 bool CChildFrame::GetContent(void ** Content, size_t & ContentLength)

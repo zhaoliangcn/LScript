@@ -101,21 +101,19 @@
 #define ID_WRITE_PASTEASHYPERLINK       32770
 #define ID_BUTTON_RUN                   32771
 #define ID_BUTTON_DEBUG                 32772
-#define ID_BUTTON3                      32773
 #define ID_BUTTON_CONTINUE              32773
-#define ID_BUTTON2                      32774
 #define ID_INSERT_CLASS_SNIPPIT         32774
-#define ID_BUTTON4                      32775
-#define ID_BUTTON5                      32776
-#define ID_BUTTON6                      32778
+#define ID_BUTTON_RUN_IN_CONSOLE        32775
 #define ID_CHECK_CLASSVIEW              32780
+#define ID_32781                        32781
+#define ID_GEN_BYTECODE                 32782
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        319
-#define _APS_NEXT_COMMAND_VALUE         32781
+#define _APS_NEXT_COMMAND_VALUE         32783
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

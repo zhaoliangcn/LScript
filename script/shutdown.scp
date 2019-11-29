@@ -1,4 +1,6 @@
 #scp
 #scpeng
-shutdown:computer
+load:extobj,OS
+define:computer,computer
+//shutdown:computer
 computer.shutdown()
