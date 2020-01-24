@@ -1,0 +1,14 @@
+#scp
+#scpeng
+define:table,tbl1
+define:regexp,re,"abc"
+define:string,s,"123455abcedfabc"
+tbl1=re.find(s)
+tbl1.show()
+s.show()
+s=re.replace(s,"999")
+s.show()
+
+re="999"
+s=re.replace(s,"abc")
+s.show()

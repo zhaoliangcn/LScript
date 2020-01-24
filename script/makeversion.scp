@@ -1,0 +1,36 @@
+#scp
+#scpeng
+define:function,main
+	define:myclass,cl
+        cl.init(1,1,1,1)
+        cl.version.show()
+        cl.ver.show()
+        cl.major.show()
+        cl.minor.show()
+        cl.sub.show()
+        cl.fix.show()
+        
+        define:string,s
+        wait:userinput,s
+end
+define:class,myclass
+	public:
+	define:function,init,a,b,c,d
+		define:int,mask,15
+		//位运算例子
+		//组合版本号
+		ver=(a<<12)|(b<<8)|(c<<4)|d
+                //提取版本号
+		major=((mask<<12)&ver)>>12
+		minor=((mask<<8)&ver)>>8
+		sub=((mask<<4)&ver)>>4
+		fix=mask&ver
+	end
+
+	define:string,version,"1.1.1.1"
+	define:int,ver
+	define:int,major,0
+	define:int,minor,0
+	define:int,sub,0
+	define:int,fix,0
+end
