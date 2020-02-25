@@ -395,6 +395,8 @@ L脚本语言的socket模型比较接近C语言
 ```c++
 #scp
 #scpeng
+#L脚本语言中socket是扩展对象，需要主动加载
+load:extobj,socket
 define:string,string1,"SOCK SOCK BALA BALA"
 define:address,addr1,"192.168.0.102",27015
 
