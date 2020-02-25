@@ -13,6 +13,7 @@ L脚本语言的开发目标是完全面向对象、支持中英文、跨平台�
 成功生成的字节码文件可以替代源码文件，通过解释器引擎加载执行
 如 ScriptEngine.exe add.scp.scpb
 
+与Ruby语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompare.md
 
 L脚本语言和编译器开发QQ群: 192019254
 
