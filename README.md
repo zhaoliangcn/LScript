@@ -15,6 +15,9 @@ L脚本语言的开发目标是完全面向对象、支持中英文、跨平台�
 
 与Ruby语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompare.md
 
+与Python语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompareWithPython.md
+
+
 L脚本语言和编译器开发QQ群: 192019254
 
 安装包百度网盘链接: https://pan.baidu.com/s/1mrKbwNs3lKQSa3f9ynYreQ 提取码: jfff
