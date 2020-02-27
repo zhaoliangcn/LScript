@@ -202,6 +202,30 @@ mytable.show()
 mytable[1].show()
 ```
 
+表对象的遍历
+
+通过traverse语句，可以实现对表对象的遍历
+
+traverse语句需要两个参数，一个是表对象，另一个是表成员访问的回调函数
+
+表成员访问的回调函数有一个参数，是表成员对象的引用
+
+```c++
+#scp
+#scpeng
+define:string,s1,"abc"
+define:string,s2,"def"
+define:table,tbl1
+tbl1.insert(s1)
+tbl1.insert(s2)
+
+define:function,myfunc,elem
+	("hello "+elem+" !").show()
+end
+
+traverse(tbl1,myfunc)
+```
+
 这个和python语言的字典类型很相似
 
 ## 运算符
