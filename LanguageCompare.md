@@ -284,6 +284,34 @@ L脚本语言的模块没有自己的名字空间，通过import语句导入模�
 
 ## 时间日期
 
+```ruby
+#!/usr/bin/ruby -w
+# -*- coding: UTF-8 -*-
+ 
+time1 = Time.new
+ 
+puts "当前时间 : " + time1.inspect
+ 
+# Time.now 功能相同
+time2 = Time.now
+puts "当前时间 : " + time2.inspect
+```
+
+L脚本语言中currenttime是一个运行时创建的全局对象
+
+```c++
+#scp
+#scpeng
+define:time,thetime
+thetime=currenttime
+thetime.year().show()
+thetime.month().show()
+thetime.day().show()
+thetime.hour().show()
+thetime.minute().show()
+thetime.second().show()
+```
+
 
 
 ## 文件
