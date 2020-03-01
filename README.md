@@ -4,6 +4,8 @@ L脚本语言解释引擎
 Window安装包和例子脚本文件
 L脚本语言的开发目标是完全面向对象、支持中英文、跨平台、可扩展，语法简单易学
 
+![helloworld](https://github.com/zhaoliangcn/LScript/blob/master/helloworld.PNG)
+
 说明:中文脚本文件的字符编码为GB2312格式、英文脚本文件的字符编码可以为ansi或utf-8格式
 
 从0.20版本开始，L脚本语言解释引擎增加了字节码动态生成的功能
