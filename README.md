@@ -1,5 +1,16 @@
 # LScript
-LScriptLanguage
+LScript Language
+
+LScript  is a simple object oriented language.
+
+This repository contains LScript IDE' source code and sample script .
+
+```c++
+#scp
+#scpeng
+("helloworld").show()
+```
+
 L脚本语言解释引擎
 Window安装包和例子脚本文件
 L脚本语言的开发目标是完全面向对象、支持中英文、跨平台、可扩展，语法简单易学
