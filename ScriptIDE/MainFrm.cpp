@@ -52,6 +52,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CMDIFrameWndEx)
 	ON_COMMAND(ID_OLE_INSERT_NEW, &CMainFrame::OnOleInsertNew)
 	ON_COMMAND(ID_INSERT_CLASS_SNIPPIT, &CMainFrame::OnInsertClassSnippit)
 	ON_COMMAND(ID_BUTTON_RUN_IN_CONSOLE, &CMainFrame::OnButtonRunInConsole)
+	ON_COMMAND(ID_BUTTON_MANUL, &CMainFrame::OnButtonManul)
+	ON_COMMAND(ID_BUTTON_GENBYTECODE, &CMainFrame::OnButtonGenbytecode)
 END_MESSAGE_MAP()
 
 // CMainFrame 构造/析构
@@ -133,6 +135,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// 将文档名和应用程序名称在窗口标题栏上的顺序进行交换。这
 	// 将改进任务栏的可用性，因为显示的文档名带有缩略图。
 	ModifyStyle(0, FWS_PREFIXTITLE);
+
 
 	return 0;
 }
@@ -541,5 +544,37 @@ void CMainFrame::OnButtonRunInConsole()
 	GetCurrentModulePath(path, MAX_PATH);
 	wcscat_s(path, MAX_PATH, L"ScriptEngine.exe");
 	filename.Format(L"\"%s\"", child->GetActiveView()->GetDocument()->GetPathName());
+	LaunchProcess(path, filename.AllocSysString());
+}
+
+
+void CMainFrame::OnButtonManul()
+{
+	std::wstring UserManulPath = GetEnvironmentVariableStr(L"PROGRAMFILES");
+	std::wstring realUserManulPath = UserManulPath + L"\\SCRIPTENGINE\\manul.mht";
+	if (PathFileExistsW(realUserManulPath.c_str()))
+		ShellExecute(NULL, L"open", realUserManulPath.c_str(), NULL, NULL, SW_SHOW);
+	else
+	{
+
+		wchar_t ModulePath[MAX_PATH] = { 0 };
+		GetProcessPath(ModulePath);
+		UserManulPath = ModulePath;
+		realUserManulPath = UserManulPath + L"\\manul.mht";
+		if (PathFileExistsW(realUserManulPath.c_str()))
+			ShellExecute(NULL, L"open", realUserManulPath.c_str(), NULL, NULL, SW_SHOW);
+	}
+}
+
+
+void CMainFrame::OnButtonGenbytecode()
+{
+	CChildFrame * child = (CChildFrame *)((CMainFrame *)AfxGetMainWnd())->MDIGetActive();
+	child->GetActiveView()->GetDocument()->DoFileSave();
+	CString filename;
+	wchar_t path[MAX_PATH] = { 0 };
+	GetCurrentModulePath(path, MAX_PATH);
+	wcscat_s(path, MAX_PATH, L"ScriptEngine.exe");
+	filename.Format(L"\"%s\" /g", child->GetActiveView()->GetDocument()->GetPathName());
 	LaunchProcess(path, filename.AllocSysString());
 }

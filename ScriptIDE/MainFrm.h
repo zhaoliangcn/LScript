@@ -89,6 +89,8 @@ public:
 	afx_msg void OnOleInsertNew();
 	afx_msg void OnInsertClassSnippit();
 	afx_msg void OnButtonRunInConsole();
+	afx_msg void OnButtonManul();
+	afx_msg void OnButtonGenbytecode();
 };
 
 

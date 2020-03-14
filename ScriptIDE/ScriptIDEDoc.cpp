@@ -240,7 +240,9 @@ BOOL CScriptIDEDoc::OnSaveDocument(LPCTSTR lpszPathName)
 				{
 					std::string ContentU = STDSTRINGEXT::UToA((char*)Content);
 					bRet = WriteFile(hFile, ContentU.c_str(), ContentU.length(), &dwWriteCount, NULL);
+
 				}
+				SetEndOfFile(hFile);
 				CloseHandle(hFile);
 			}
 			free(Content);

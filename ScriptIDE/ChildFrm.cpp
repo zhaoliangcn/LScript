@@ -67,7 +67,7 @@ void CChildFrame::UpdateLineNumberWidth(void)
 		iLineNum /= 10;
 	}
 	iLineMarginWidthNow = SendEditor(SCI_GETMARGINWIDTHN, 0, 0);
-	long charWidth = SendEditor(SCI_TEXTWIDTH, STYLE_LINENUMBER, (LPARAM)("9"));
+	long charWidth = SendEditor(SCI_TEXTWIDTH, STYLE_LINENUMBER, (LPARAM)("99"));
 	iLineMarginWidthFit = charWidth * iLineNumCount;
 	if (iLineMarginWidthNow != iLineMarginWidthFit)
 	{
@@ -124,6 +124,7 @@ CChildFrame::CChildFrame()
 	m_fnDirect = NULL;
 	m_ptrDirect = NULL;
 	hthreadDebug = NULL;
+	hthreadRun = NULL;
 	bUTF8 = true;
 }
 
@@ -410,6 +411,30 @@ DWORD WINAPI CChildFrame::DebugThread(void*param)
 			((CMainFrame *)threadparam->mainframe)->m_wndOutput.ClearDebugOutput();
 			ScriptRegisterUICallBack(hEngine, (void *)threadparam->mainframe, (UICallBack)EditorUIMessage);
 			ScriptDebugMemoryScript(hEngine, (wchar_t *)STDSTRINGEXT::UTF2W((const char *)threadparam->content).c_str());
+			((CMainFrame *)threadparam->mainframe)->m_wndClassView.ClearClassView();
+		}
+		CloseScriptEngine(hEngine);		
+	}
+	return 0;
+}
+DWORD __stdcall CChildFrame::RunThread(void * param)
+{
+	HANDLE hEngine = CreateScriptEngine();
+	if (hEngine)
+	{
+
+		THREAD_PARAM* threadparam = (THREAD_PARAM *)param;
+		if (threadparam->child)
+		{
+
+			CString filename = threadparam->filename;
+			ScriptSetScriptFileName(hEngine, filename);
+
+			((CMainFrame *)threadparam->mainframe)->_scriptDbg.hEngine = hEngine;
+			((CMainFrame *)threadparam->mainframe)->m_wndOutput.ClearDebugOutput();
+			ScriptRegisterUICallBack(hEngine, (void *)threadparam->mainframe, (UICallBack)EditorUIMessage);
+			ScriptDebugMemoryScript(hEngine, (wchar_t *)STDSTRINGEXT::UTF2W((const char *)threadparam->content).c_str());
+			((CMainFrame *)threadparam->mainframe)->m_wndClassView.ClearClassView();
 		}
 		CloseScriptEngine(hEngine);		
 	}
@@ -490,29 +515,47 @@ bool CChildFrame::InsertClassDef()
 	}
 	return false;
 }
+int CChildFrame::GetSelectionStart()
+{
+	return SendEditor(SCI_GETSELECTIONSTART, 0, 0);
+}
+int CChildFrame::GetSelectionEnd()
+{
+	return  SendEditor(SCI_GETSELECTIONEND, 0, 0);
+}
+int CChildFrame::GetTextLength()
+{
+	return SendEditor(SCI_GETTEXTLENGTH, 0, 0);
+}
+int CChildFrame::FormatRange(BOOL draw, Sci_RangeToFormat *rfPrint)
+{
+	return SendEditor(SCI_FORMATRANGE, static_cast<WPARAM>(draw), reinterpret_cast<LPARAM>(rfPrint));
+}
 bool CChildFrame::RunScript()
 {
-	HANDLE hEngine = CreateScriptEngine();
-	if (hEngine)
+	void *Content;
+	size_t len = 0;
+	THREAD_PARAM *param = new THREAD_PARAM;
+	param->mainframe = (CMainFrame*)AfxGetMainWnd();
+	param->child = this;
+	param->filename = GetActiveView()->GetDocument()->GetPathName();
+	param->child->GetContent(&Content, len);
+	param->content = (char*)Content;
+	free(Content);
+	if (hthreadRun == NULL)
 	{
-		void *Content;
-		size_t len = 0;
-		if (GetContent(&Content, len))
-		{			
-			CString filename = GetActiveView()->GetDocument()->GetPathName();
-			ScriptSetScriptFileName(hEngine, filename);
-			//ScriptSetDebugger(hEngine, &((CMainFrame *)AfxGetMainWnd())->_scriptDbg);
-			((CMainFrame *)AfxGetMainWnd())->m_wndClassView.ClearClassView();
-			((CMainFrame *)AfxGetMainWnd())->m_wndOutput.ClearDebugOutput();
-			ScriptRegisterUICallBack(hEngine, (void *)AfxGetMainWnd(), (UICallBack)EditorUIMessage);
-			ScriptDebugMemoryScript(hEngine, (wchar_t *)STDSTRINGEXT::UTF2W((const char *)Content).c_str());
-			free(Content);
-		}
-		
-		CloseScriptEngine(hEngine);
-		return true;
+		hthreadRun = CreateThread(NULL, 0, RunThread, param, 0, NULL);
 	}
-	return false;
+	else
+	{
+		DWORD ExitCode;
+		GetExitCodeThread(hthreadRun, &ExitCode);
+		if (ExitCode != STILL_ACTIVE)
+		{
+			hthreadRun = CreateThread(NULL, 0, RunThread, param, 0, NULL);
+		}
+	}
+	return true;
 }
 
 
@@ -668,6 +711,21 @@ LRESULT CChildFrame::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 					memset(space, ' ', 1024);
 					space[nIndent] = 0;
 					SendEditor(SCI_REPLACESEL, 0, (sptr_t)space);
+				}
+				char word[1000]; //保存当前光标下的单词 
+				TextRange tr;    //用于SCI_GETTEXTRANGE命令 
+				int pos = SendEditor(SCI_GETCURRENTPOS); //取得当前位置 
+				int linepos = SendEditor(SCI_POSITIONFROMLINE, line-1); //上一行起始位置 
+				tr.chrg.cpMin = linepos;  //设定单词区间，取出单词 
+				tr.chrg.cpMax = pos;
+				tr.lpstrText = word;
+				SendEditor(SCI_GETTEXTRANGE, 0, sptr_t(&tr));
+				if (strncmp(word, "define:function,",strlen("define:function,")) == 0||
+					strncmp(word, "define:class,", strlen("define:class,")) == 0) //输入define:function.自动补全end 
+				{
+					SendEditor(SCI_APPENDTEXT,6 , (sptr_t)"\t\r\nend");
+					SendEditor(SCI_SETCURRENTPOS, pos+1);
+					SendEditor(SCI_SETSEL, pos + 1, pos + 1);
 				}
 			}
 			LastProcessedChar = 0;

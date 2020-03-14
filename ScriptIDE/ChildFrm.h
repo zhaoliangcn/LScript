@@ -78,6 +78,10 @@ public:
 	bool SetCurrentLine(int line);
 	bool InsertFunctiondef();
 	bool InsertClassDef();
+	int GetSelectionStart();
+	int GetSelectionEnd();
+	int GetTextLength();
+	int FormatRange(BOOL draw, Sci_RangeToFormat *rfPrint);
 	SciFnDirect m_fnDirect;
 	sptr_t m_ptrDirect;
 	sptr_t SendEditor(unsigned int iMessage, uptr_t wParam = 0, sptr_t lParam = 0);
@@ -85,7 +89,9 @@ public:
 	void InitEditor();
 	virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
 	static DWORD WINAPI DebugThread(void*param);
+	static DWORD WINAPI RunThread(void*param);
 	HANDLE hthreadDebug;
+	HANDLE hthreadRun;
 	std::string lastFindText;
 	std::string lastReplaceText;
 	std::string lastReplaceToText;

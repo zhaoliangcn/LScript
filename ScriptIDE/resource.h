@@ -107,13 +107,18 @@
 #define ID_CHECK_CLASSVIEW              32780
 #define ID_32781                        32781
 #define ID_GEN_BYTECODE                 32782
+#define ID_BTN_ENG2CHS                  32783
+#define ID_BTN_CHS2ENG                  32784
+#define ID_BUTTON_MANUL                 32785
+#define ID_BUTTON2                      32786
+#define ID_BUTTON_GENBYTECODE           32786
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        319
-#define _APS_NEXT_COMMAND_VALUE         32783
+#define _APS_NEXT_COMMAND_VALUE         32787
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           310
 #endif

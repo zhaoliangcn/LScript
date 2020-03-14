@@ -13,8 +13,9 @@
 //
 
 #pragma once
-
-
+#include "../ThirdParty\\scintilla\\include\\Scintilla.h"
+#include "../ThirdParty\\scintilla\\include\\SciLexer.h"
+#include <vector>
 class CScriptIDEView : public CView
 {
 protected: // 仅从序列化创建
@@ -53,6 +54,15 @@ protected:
 	afx_msg void OnRButtonUp(UINT nFlags, CPoint point);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	DECLARE_MESSAGE_MAP()
+	virtual void OnPrint(CDC* pDC, CPrintInfo* pInfo);
+public:
+	virtual void OnPrepareDC(CDC* pDC, CPrintInfo* pInfo = NULL);
+	virtual BOOL PaginateTo(CDC* pDC, CPrintInfo* pInfo);
+	virtual int PrintPage(CDC* pDC, CPrintInfo* pInfo, int nIndexStart, int nIndexStop);
+	virtual void PrintHeader(CDC* pDC, CPrintInfo* pInfo, Sci_RangeToFormat& frPrint);
+	virtual void PrintFooter(CDC* pDC, CPrintInfo* pInfo, Sci_RangeToFormat& frPrint);
+
+	std::vector<int>          m_PageStart;
 };
 
 #ifndef _DEBUG  // ScriptIDEView.cpp 中的调试版本
