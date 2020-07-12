@@ -1,0 +1,70 @@
+#scp
+#scpeng
+
+//加载扩展对象
+//window对象在canvasaddin.dll中定义
+
+load:extobj,canvas
+
+//自定义窗口对象的初始化回调函数
+//mywind是窗体对象，相当于C++类的this指针
+define:function,oninitwindow,mywind
+
+	//设置窗口对象的位置和大小属性
+	
+	mywind.rect[x]=100
+	mywind.rect[y]=100
+	mywind.rect[w]=640
+	mywind.rect[h]=480
+	
+	//设置窗口对象的颜色属性
+	
+	mywind.color="red"
+	mywind.bgcolor="green"
+	
+	//设置窗口的标题属性
+	
+	mywind.caption="PictureWindow"
+	
+	//设置窗口对象的背景图片属性
+	
+	mywind.images[normal]="E:\\tmp\\bmp\\000d3359dd9f211f19af7b2382d11043.bmp"
+	//mywind.images[hover]="hover.bmp"
+	mywind.images[push]="E:\\tmp\\bmp\\0b6801eae36e0a51f1913309f6548577.bmp"
+end
+
+//自定义窗口对象的点击事件处理函数
+
+define:function,onclickwindow,mywind
+	popup:messagebox,"WindowClicked",""
+	mywind.move(0,0,1024,768)
+end
+
+define:function,onclickbutton3,btn,parentwind
+	load:extobj,OS
+	define:computer,c
+	c.shutdown()	
+end
+define:function,main
+	define:window,wind
+        
+        define:button,btn3
+	btn3.rect[x]=0
+	btn3.rect[y]=0
+	btn3.rect[w]=200
+	btn3.rect[h]=30
+	btn3.text ="ShutDownComputer"
+	btn3.bind(onclick,onclickbutton3)
+	wind.subcontrols.append(btn3)
+	
+    //绑定事件处理函数
+	
+	wind.bind(onclick,onclickwindow)
+	wind.bind(oninit,oninitwindow)
+	
+	wind.show()
+	
+	//等待窗口关闭退出
+	
+    wind.wait()
+end
