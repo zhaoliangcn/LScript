@@ -1,0 +1,7 @@
+all:
+	/home/coder/Qt5.12.1/5.12.1/gcc_64/bin/qmake -o smakefile QScriptEditor.pro
+	make -f smakefile
+clean:
+	/home/coder/Qt5.12.1/5.12.1/gcc_64/bin/qmake -o smakefile QScriptEditor.pro
+	make clean -f smakefile
+
