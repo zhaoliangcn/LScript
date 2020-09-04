@@ -34,6 +34,8 @@ L脚本语言的开发目标是完全面向对象、支持中英文、跨平台�
 
 与C语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompareWithC.md
 
+与Java语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompareWithJava.md
+
 L脚本语言和编译器开发QQ群: 192019254
 
 本仓库仅包含LScriptIDE的源码，暂未开放解释引擎，最新安装包请通过网盘下载
