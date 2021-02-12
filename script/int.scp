@@ -1,0 +1,23 @@
+#scp
+#scpeng
+define:int,x,100
+define:int,y,200
+define:int,z
+z=x+y
+z.show()
+z=y-x
+z.show()
+z=x*y
+z.show()
+z=y/x
+z.show()
+define:function,ff,arg1,arg2
+	("arg1*arg1+2*arg2+3=").show()
+	return (arg1*arg1+2*arg2+3)
+end
+
+z=ff(x,y)
+z.show()
+
+
+
