@@ -32,6 +32,17 @@ show()
 
 ​		整数对象自身
 
+​	例程
+
+​	
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.show()
+```
+
 
 
 获取()
@@ -51,6 +62,15 @@ get()
 ​	返回值
 
 ​		字符串临时对象，内容为整数对象的类型名称
+
+​	例程
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.get(type).show()
+```
 
 
 
@@ -72,6 +92,15 @@ transform()
 
 ​		字符串临时对象，内容为整数对象的值的字符串表示
 
+​	例程
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.transform(string).show()
+```
+
 
 
 平方()
@@ -89,6 +118,15 @@ square()
 ​	返回值
 
 ​		整数临时对象，值为整数对象的平方
+
+​	例程	
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.square().show()
+```
 
 
 
@@ -108,6 +146,15 @@ sqrt()
 
 ​		整数临时对象，值为整数对象的平方根
 
+​	例程	
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.sqrt().show()
+```
+
 
 
 立方()
@@ -125,6 +172,15 @@ cubic()
 ​	返回值
 
 ​		整数临时对象，值为整数对象的立方
+
+​	例程
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.cubic().show()
+```
 
 
 
@@ -144,6 +200,15 @@ cuberoot()
 
 ​		整数临时对象，值为整数对象的立方根
 
+​	例程
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.cuberoot().show()
+```
+
 
 
 绝对值()
@@ -161,6 +226,15 @@ abs()
 ​	返回值
 
 ​		整数临时对象，值为整数对象的绝对值
+
+​	例程	
+
+```c++
+#scp
+#scpeng
+define:int,x,-1024
+x.abs().show()
+```
 
 
 
@@ -180,6 +254,15 @@ acos()
 
 ​		浮点数临时对象，值为整数对象的反余弦
 
+​	例程
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.acos().show()
+```
+
 
 
 余弦()
@@ -197,6 +280,15 @@ cos()
 ​	返回值
 
 ​		浮点数临时对象，值为整数对象的余弦
+
+​	例程	
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.cos().show()
+```
 
 
 
@@ -216,6 +308,15 @@ asin()
 
 ​		浮点数临时对象，值为整数对象的反正弦
 
+​	例程	
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.asin().show()
+```
+
 
 
 正弦()
@@ -233,6 +334,15 @@ sin()
 ​	返回值
 
 ​		浮点数临时对象，值为整数对象的正弦
+
+​	例程	
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.sin().show()
+```
 
 
 
@@ -252,6 +362,15 @@ atan()
 
 ​		浮点数临时对象，值为整数对象的反正切
 
+​	例程	
+
+```
+#scp
+#scpeng
+define:int,x,1024
+x.atan().show()
+```
+
 
 
 正切()
@@ -270,11 +389,20 @@ tan()
 
 ​		浮点数临时对象，值为整数对象的正切
 
+​	例程	
+
+```c++
+#scp
+#scpeng
+define:int,x,1024
+x.tan().show()
+```
+
 
 
 次方()
 
-tan()
+pow()
 
 ​	参数y
 
@@ -287,3 +415,13 @@ tan()
 ​	返回值
 
 ​		整数临时对象，值为整数对象的y次方
+
+​	例程	
+
+```
+#scp
+#scpeng
+define:int,x,10
+x.pow(3).show()
+```
+
