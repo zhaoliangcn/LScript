@@ -364,7 +364,7 @@ atan()
 
 ​	例程	
 
-```
+```c++
 #scp
 #scpeng
 define:int,x,1024
@@ -418,7 +418,7 @@ pow()
 
 ​	例程	
 
-```
+```c++
 #scp
 #scpeng
 define:int,x,10
