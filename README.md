@@ -30,3 +30,7 @@ This repository contains LScript IDE' source code and sample script .
 
 Windows平台安装包百度网盘链接: https://pan.baidu.com/s/1mrKbwNs3lKQSa3f9ynYreQ 提取码: jfff
 
+
+https://github.com/zhaoliangcn/llanguage
+
+https://gitee.com/zhaoliangcn/llanguage
