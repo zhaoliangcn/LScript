@@ -32,8 +32,5 @@ Windows平台安装包百度网盘链接: https://pan.baidu.com/s/1mrKbwNs3lKQSa
 
 
 
-open source
-https://github.com/zhaoliangcn/llanguage
-
 开源代码
 https://gitee.com/zhaoliangcn/llanguage
