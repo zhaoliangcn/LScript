@@ -28,9 +28,9 @@ This repository contains LScript IDE' source code and sample script .
 
 如何在C或C++程序中集成L脚本语言https://github.com/zhaoliangcn/LScript/blob/master/HowToEmbedInCplusplus.md
 
-L脚本语言和编译器开发QQ群: 192019254
+Windows平台安装包百度网盘链接: https://pan.baidu.com/s/1mrKbwNs3lKQSa3f9ynYreQ 提取码: jfff
 
-本仓库仅包含LScriptIDE的源码，暂未开放解释引擎，最新安装包请通过网盘下载
 
-安装包百度网盘链接: https://pan.baidu.com/s/1mrKbwNs3lKQSa3f9ynYreQ 提取码: jfff
 
+开源代码
+https://gitee.com/zhaoliangcn/llanguage
