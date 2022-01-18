@@ -1,0 +1,8 @@
+#scp
+#scpeng
+define:function,main
+	// (0) 是一个整数对象
+        // () 括号中的常量表达式经过解释器引擎进行了求值，进而转换为整数对象
+        // (0).transform(string) 是将整数对象转换为字符串
+	("A"+(0).transform(string)).show()
+end
