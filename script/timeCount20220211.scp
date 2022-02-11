@@ -1,0 +1,21 @@
+#scp
+#scpeng
+define:function,main
+	define:time,start1
+	#start1.get("currenttime")
+	read:currenttime,start1
+	define:time,end1
+	define:int,count,100000
+	while(count>0)
+		count--
+		count.show()
+	end
+	
+	#end1.get("currenttime")
+	read:currenttime,end1
+        
+	start1.show()
+	end1.show()
+        
+        
+end
