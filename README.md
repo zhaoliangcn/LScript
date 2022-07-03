@@ -1,9 +1,8 @@
-# LScript
-LScript Language
+# llanguage
 
-LScript  is an object oriented language.
+llanguage  is an object oriented language.
 
-This repository contains LScript IDE' source code and sample script .
+This repository contains llanguage IDE' source code and sample script .
 
 ```c++
 #scp
