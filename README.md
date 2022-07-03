@@ -16,21 +16,21 @@ This repository contains LScript IDE' source code and sample script .
 
 ![helloworld](https://github.com/zhaoliangcn/LScript/blob/master/helloworld.PNG)
 
-与Ruby语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompare.md
+与Ruby语言的对比https://github.com/zhaoliangcn/LScript/blob/master/doc/LanguageCompare.md
 
-与Python语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompareWithPython.md
+与Python语言的对比https://github.com/zhaoliangcn/LScript/blob/master/doc/LanguageCompareWithPython.md
 
-与go语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompareWithGo.md
+与go语言的对比https://github.com/zhaoliangcn/LScript/blob/master/doc/LanguageCompareWithGo.md
 
-与C语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompareWithC.md
+与C语言的对比https://github.com/zhaoliangcn/LScript/blob/master/doc/LanguageCompareWithC.md
 
-与Java语言的对比https://github.com/zhaoliangcn/LScript/blob/master/LanguageCompareWithJava.md
+与Java语言的对比https://github.com/zhaoliangcn/LScript/blob/master/doc/LanguageCompareWithJava.md
 
-如何在C或C++程序中集成L脚本语言https://github.com/zhaoliangcn/LScript/blob/master/HowToEmbedInCplusplus.md
+如何在C或C++程序中集成L脚本语言https://github.com/zhaoliangcn/LScript/blob/master/doc/HowToEmbedInCplusplus.md
 
 Windows平台安装包百度网盘链接: https://pan.baidu.com/s/1mrKbwNs3lKQSa3f9ynYreQ 提取码: jfff
 
 
 
 开源代码
-https://gitee.com/zhaoliangcn/llanguage
+https://github.com/zhaoliangcn/llanguage
