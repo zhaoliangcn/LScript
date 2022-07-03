@@ -1,0 +1,3 @@
+[submodule "llanguage"]
+	path = llanguage
+	url = https://github.com/zhaoliangcn/llanguage.git
