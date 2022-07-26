@@ -1,0 +1,8 @@
+#scp
+#scpeng
+define:function,main
+	commandparameter[1].show()
+	define:file,f1
+        f1.open(commandparameter[1])
+        f1.show()        
+end

@@ -1,0 +1,8 @@
+#scp
+#scpeng
+define:function,main
+	define:directory,d1,"C:\\"
+        d1.open()
+        d1.enum(file).show()
+        d1.enum(subdirectory).show()
+end
